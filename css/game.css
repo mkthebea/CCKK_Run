@@ -28,6 +28,10 @@
 }
 
 .game_info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
   position: fixed;
   left: 0;
   top: 0;
@@ -37,26 +41,88 @@
 }
 
 .game_info .score_box {
+  display: flex;
+  float: left;
   font-weight: bolder;
-  position: absolute;
-  top:10px;
+  text-align: center;
+  width: 10%;
+  /* position: absolute; */
+  /* margin-top: 14px; */
   right: 10%;
-  color: red;
+  color: rgb(247, 178, 4);
   font-size: 50px;
+  -webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: white;
 }
 
-#pause_button {
-  position: absolute;
-  top:30%;
-  right: 1%;
+.game_info .cookie_profile {
+  float: left;
+  width: 20%;
+  height: 80%;
+  padding: 10px;
+}
+
+.game_info .cookie_profile .cookie_img {
+  float: left;
+  width: 40%;
+  height: 100%;
+  text-align: center;
+}
+
+.game_info .cookie_profile .cookie_img img {
+  height: 100%;
+  background-color: white;
+  border-radius: 30px;
+  border: 5px solid rgb(247, 178, 4);
+}
+
+.game_info .cookie_profile .cookie_desc {
+  float: left;
+  left: 0;
+  color: #fff;
+  width: 60%;
+}
+.game_info .cookie_profile .cookie_desc .cookie_name {
+  font-size: 25px;
+  font-weight: bolder;
+  color: #fff;
+  padding: 3%;
+}
+/* .game_info .cookie_profile .cookie_desc .cookie_story {
+} */
+
+.game_info .hp {
+  display: flex;
+  align-items: center;
+  float: left;
+  width: 50%;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: white;
+}
+.game_info .hp span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  transition: width 0.3s linear;
+}
+
+
+.game_info #pause_button {
+  display: flex;
+  /* margin-top: 35px; */
+  margin-right: 10px;
   height: 30%;
   width: 7%;
   color: #fff;
-  font-size: 16px;
-  background-color: rgb(241, 72, 72);
+  font-size: 20px;
+  background-color: rgb(247, 178, 4);
   border-radius: 5px;
-  border-width: 5px;
-  border-color: rgb(241, 72, 72);
+  border-width: 2px;
+  border-color: #fff;
+  text-align: center;
 }
 
 
@@ -93,6 +159,11 @@
     }
     100% {
       background-position-x: -2662px;
+    }
+  }
+  @keyframes blink_effect {
+    50% {
+      opacity: 0;
     }
   }
 
@@ -157,6 +228,21 @@
   background-size: 242.5px 269px;
   transform: none;
 }
+.cookie_box .cookie.crashed {
+  /* height: 100%; */
+  /* background-image: url("../lib/images/gingerBread_crashed.png"); */
+  /* background-size: 242.5px 269px; */
+  animation: blink_effect .1s infinite;
+  /* animation: cookie_slide .5s infinite steps(2); */
+}
+.cookie_box .cookie.dead {
+  background-image: url('../lib/images/gingerBread_dead.png');
+  background-size: 242.5px 269px;
+  width: 242.5px;
+  height: 269px;
+  animation: none !important;
+  /* animation: none; */
+}
 
 .jelly {
   position: absolute;
@@ -166,6 +252,15 @@
   background-size: 100px 100px;
   z-index: 10;
   /* background-color: blue; */
+}
+
+.obstacle {
+  position: absolute;
+  width: 100px;
+  height: 200px;
+  background-image: url("../lib/obstacles/tree.jpg");
+  background-size: 100px 200px;
+  z-index: 10;
 }
 
 @keyframes stageStart {
@@ -194,6 +289,9 @@
   white-space: nowrap;
   animation: stageStart 1.5s;
   animation-fill-mode: both;
+  color: rgb(247, 178, 4);
+  -webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: white;
 }
 .paused_box {
   position: absolute;
@@ -206,5 +304,8 @@
   color: #fff;
   font-size: 90px;
   white-space: nowrap;
+  color: rgb(247, 178, 4);
+  -webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: white;
 }
 

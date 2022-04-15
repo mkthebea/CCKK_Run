@@ -14,9 +14,14 @@ const allJellyComProp = {
   arr: [],
 };
 
+const allObstacleComProp = {
+  arr: [],
+};
+
 const stageInfo = {
   stage: [],
   totalScore: 0,
+  gameOver: false,
 };
 
 const gameBackground = {
@@ -45,12 +50,17 @@ const pause = () => {
 
 const renderGame = () => {
   cookie.keyMotion();
-  if (!gameProp.paused) {
+  if (!gameProp.paused && !gameProp.gameOver) {
     cookie.movex = cookie.movex + cookie.speed;
     document.querySelector(".cookie_box").style.transform = `translate(${cookie.movex}px, ${cookie.movey}px)`;
     setGameBackground();
     allJellyComProp.arr.forEach((arr) => {
       arr.crashJelly();
+    });
+    allObstacleComProp.arr.forEach((arr) => {
+      if (!arr.isCrashed && !cookie.crashed) {
+        arr.crashObstacle();
+      }
     });
   }
   window.requestAnimationFrame(renderGame);

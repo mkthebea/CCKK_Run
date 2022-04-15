@@ -16,11 +16,15 @@ class Stage {
     for (let i = 0; i <= 100; i++) {
       allJellyComProp.arr[i] = new Jelly(500 + i * 300, 400, 100);
     }
+    allObstacleComProp.arr[0] = new Obstacle(1000, 450, 500);
+    allObstacleComProp.arr[1] = new Obstacle(1100, 450, 500);
+    allObstacleComProp.arr[2] = new Obstacle(2000, 450, 500);
+    allObstacleComProp.arr[3] = new Obstacle(2900, 250, 500);
   }
   stageGuide(text) {
     this.parentNode = document.querySelector(".game_app");
     this.textBox = document.createElement("div");
-    if (text === "PAUSED") {
+    if (text === "PAUSED" || text === "GAME OVER") {
       this.textBox.className = "paused_box";
     } else {
       this.textBox.className = "stage_box";
@@ -43,6 +47,10 @@ class Cookie {
     this.jumpMaxHeight = -250;
     this.jumpCount = 0;
     this.jumpTime = 30;
+    this.hpValue = 1000;
+    this.hpProgress = 0;
+    this.defaultHpValue = this.hpValue;
+    this.crashed = false;
   }
 
   position() {
@@ -125,6 +133,25 @@ class Cookie {
     //   }
     // }
   }
+
+  minusHp(hp) {
+    const hpBox = document.querySelector(".game_info .hp span");
+    // console.log(hpBox);
+    this.hpValue += hp;
+    console.log(this.hpValue);
+    this.hpProgress = Math.max(0, (this.hpValue / this.defaultHpValue) * 100);
+    hpBox.style.width = this.hpProgress + "%";
+
+    if (this.hpValue <= 0) {
+      this.dead();
+    }
+  }
+
+  dead() {
+    this.el.classList.add("dead");
+    gameProp.gameOver = true;
+    stageInfo.stage.stageGuide("GAME OVER");
+  }
 }
 
 class Jelly {
@@ -168,6 +195,54 @@ class Jelly {
     if (!gameProp.paused) {
       stageInfo.totalScore += this.score;
       document.querySelector(".score_box").innerText = stageInfo.totalScore;
+      console.log(this.score);
+    }
+  }
+}
+
+class Obstacle {
+  constructor(x, y, damage) {
+    this.parentNode = document.querySelector(".game");
+    this.el = document.createElement("div");
+    this.el.className = "obstacle";
+    this.x = x;
+    this.y = y;
+    this.damage = damage;
+    this.isCrashed = false;
+
+    this.init();
+  }
+  init() {
+    this.el.style.transform = `translate(${this.x}px, ${this.y}px)`;
+    this.parentNode.appendChild(this.el);
+  }
+  position() {
+    return {
+      left: this.el.getBoundingClientRect().left,
+      right: this.el.getBoundingClientRect().right,
+      top: gameProp.screenHeight - this.el.getBoundingClientRect().top,
+      bottom: gameProp.screenHeight - this.el.getBoundingClientRect().top - this.el.getBoundingClientRect().height,
+    };
+  }
+  crashObstacle() {
+    if (
+      this.position().right > cookie.position().left &&
+      this.position().left < cookie.position().right &&
+      this.position().top > cookie.position().bottom &&
+      this.position().bottom < cookie.position().top
+    ) {
+      this.isCrashed = true;
+      cookie.crashed = true;
+      // console.log("crashed");
+      cookie.minusHp(this.damage * -1);
+      document.querySelector(".cookie").classList.add("crashed");
+
+      setTimeout(() => {
+        document.querySelector(".cookie").classList.remove("crashed");
+        cookie.crashed = false;
+      }, 800);
+
+      // console.log(this.position(), cookie.position());
     }
   }
 }
