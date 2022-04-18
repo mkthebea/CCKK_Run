@@ -11,7 +11,7 @@
   z-index: 0;
   width: 70000000000px;
   height: 100%;
-  background-image: url('../lib/backgrounds/game/dragon.png');
+  /* background-image: url('../lib/backgrounds/game/dragon.png'); */
   background-repeat: repeat-x;
   background-size: auto 100%;
 }
@@ -22,7 +22,7 @@
   z-index: 10;
   width: 70000000000px;
   height: 10%;
-  background-image: url('../lib/backgrounds/ground/ground.png');
+  /* background-image: url('../lib/backgrounds/ground/ground.png'); */
   background-repeat: repeat-x;
   background-size: auto 100%;
 }
@@ -203,7 +203,7 @@
   animation: none;
   transform: rotate(270deg);
   bottom: -19px;
-  left: 110px;
+  /* left: 110px; */
   /* animation: cookie_slide .2s infinite steps(2); */
 }
 .cookie_box .cookie.jump {
@@ -236,7 +236,7 @@
   /* animation: cookie_slide .5s infinite steps(2); */
 }
 .cookie_box .cookie.dead {
-  background-image: url('../lib/images/gingerBread_dead.png');
+  background-image: url('../lib/images/gingerBrave_dead.png');
   background-size: 242.5px 269px;
   width: 242.5px;
   height: 269px;
@@ -246,21 +246,23 @@
 
 .jelly {
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-image: url("../lib/jelly/jelly_bean.png");
-  background-size: 100px 100px;
+  background-size: 70px 70px;
   z-index: 10;
   /* background-color: blue; */
 }
 
 .obstacle {
   position: absolute;
-  width: 100px;
+  width: 180px;
   height: 200px;
-  background-image: url("../lib/obstacles/tree.jpg");
-  background-size: 100px 200px;
+  /* bottom: 63%; */
+  background-image: url("../lib/obstacles/yellow_cone.png");
+  background-size: 180px 200px;
   z-index: 10;
+  background-color: red;
 }
 
 @keyframes stageStart {
