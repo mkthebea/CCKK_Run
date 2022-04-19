@@ -11,6 +11,20 @@
   background-color: black;
 }
 
+@keyframes cookie_idle {
+  0% {
+    background-size: 264px 270px;
+    height: 270px;
+  }
+  50% {
+    background-size: 264px 265px;
+    height: 265px;
+  }
+  100% {
+    background-size: 264px 270px;
+    height: 270px;
+  }
+}
 .lobby .cookie_lobby {
   position: absolute;
   left:50%;
@@ -21,6 +35,7 @@
   height: 270px;
   margin-left: -132px;
   margin-bottom: -135px;
+  animation: cookie_idle 1s infinite;
 }
 
 .lobby .play_button {
