@@ -3,41 +3,23 @@
 
 <head>
 	<title>DAL GGA</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="./css/game.css">
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./css/lobby.css">
 
     <style type="text/css">    
         body {margin:0;}
     </style>
 </head>
 <body>
-    <div class="game_app">
-        <div class="game">
-            <div class="cookie_box">
-                <div class="cookie run"></div>
-            </div>
-            <div class="ground"></div>
-        </div>
-        <div class="game_info">
-            <div class="cookie_profile">
-                <div class="cookie_img">
-                    <img src="lib/images/gingerMK_profile.png" alt="">
-                </div>
-                <div class="cookie_desc">
-                    <div class="cookie_name">Ginger MK</div>
-                    <div class="cookie_story">Made By HJ, <br>First Cookie</div>
-                </div>
-            </div>
-            <div class="hp">
-                <span></span>
-            </div>
-            <div class="score_box">0</div>
-            <button type="button" id="pause_button" onclick="pause()">PAUSE</button>
-            
-        </div>
+    <div class="lobby">
+        <div class="cookie_lobby"></div>
+        <button class="play_button" onclick="location.href='game.html'">Play</button>
+        <div class="highest_score"></div>
+        <div class="score"></div>
+        <button class="reset_button" onclick="reset()">Reset</button>
     </div>
-    <script type="text/javascript" src="./js/stage.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./js/game.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./js/class.js" charset="utf-8"></script>
+
+    <script type="text/javascript" src="./js/lobby.js" charset="utf-8"></script>
+
 </body>
 </html>

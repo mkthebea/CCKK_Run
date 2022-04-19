@@ -1,0 +1,48 @@
+.lobby {
+  overflow: hidden;
+  position: relative;
+  min-width: 1280px;
+  height: 100vh;
+  /* width: 100vh; */
+  background-image: url('../lib/lobby/The\ Witch\'s\ Kitchen.png');
+  background-size: auto 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+.lobby .cookie_lobby {
+  position: absolute;
+  left:50%;
+  bottom:50%;
+  background-image: url('../lib/images/gingerMK_profile.png');
+  background-size: 264px 270px;
+  width: 264px;
+  height: 270px;
+  margin-left: -132px;
+  margin-bottom: -135px;
+}
+
+.lobby .play_button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 30px;
+    width: 20%;
+    height: 10%;
+    background-color: orange;
+    border-radius: 10px;
+    border-color: whitesmoke;
+    border-width: 5px;
+    font-size: 50px;
+    color: white;
+}
+
+.lobby .highest_score {
+    display: block;
+    color: white;
+}
+.lobby .score {
+    display: block;
+    color: white;
+}

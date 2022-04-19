@@ -1,11 +1,11 @@
 class Stage {
   constructor(stage) {
-    this.level = 0;
+    this.stageName = stage.name;
     // this.isStart = false;
     this.backgroundUrl = stage.backgroundUrl;
     this.groundUrl = stage.groundUrl;
     this.length = stage.length;
-    console.log(this.length);
+    // console.log(this.length);
 
     this.init();
     this.stageStart();
@@ -17,18 +17,84 @@ class Stage {
   }
   stageStart() {
     // this.isStart = true;
-    this.stageGuide(`START STAGE ${this.level + 1}`);
+    this.stageGuide(`START ${this.stageName}`);
   }
-  stageEnd() {
+  stageClear() {
     // this.isStart = false;
     this.stageGuide("STAGE CLEAR");
+    localStorage.setItem("score", stageInfo.totalScore);
+    if (localStorage.getItem("highestScore") < stageInfo.totalScore) {
+      localStorage.setItem("highestScore", stageInfo.totalScore);
+    }
+    cookie.jumpState = 0;
+    cookie.movey = 0;
+    cookie.jumpTimer = 0;
+    cookie.jumpCount = 0;
+
+    document.querySelector(".cookie").className = "cookie run";
+    // document.querySelector(".cookie").classList.add("clear"); //clear 이미지 css에 추가할 것!!!!!!!!!!!!!!!!!
+    setTimeout(() => {
+      const nextStage = confirm("다음 스테이지?");
+      if (nextStage) {
+        stageInfo.currentStageIndex++;
+
+        cookie.movex = 0;
+        gameBackground.gameBox.style.transform = `translateX(${0}px)`;
+
+        allJellyComProp.arr.splice(0);
+        allObstacleComProp.arr.splice(0);
+
+        newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
+        stageInfo.currentStage = newStage;
+
+        gameProp.gameClear = false;
+      } else {
+        stageInfo.currentStageIndex++;
+        localStorage.setItem("currentStageIndex", stageInfo.currentStageIndex);
+        localStorage.setItem("hp", cookie.hpValue);
+
+        cookie.movex = 0;
+        gameBackground.gameBox.style.transform = `translateX(${0}px)`;
+
+        allJellyComProp.arr.splice(0);
+        allObstacleComProp.arr.splice(0);
+        location.href = "index.html";
+      }
+    }, 1500);
+
+    // var link = "file:///C:/Users/5596m/Desktop/test.html";
+    // window.location.href = link;
+    // // window.location.replace(link);
+    // setTimeout(() => window.open(link), 5000);
+    // window.open(link);
+  }
+  allClear() {
+    // const confirmClear = confirm("ALL CREAR!!");
+    // console.log(confirmClear);
+    // if (confirmClear) {
+    //   location.href = "index.html";
+    //   console.log(location.href);
+    // }
+    this.stageGuide("STAGE CLEAR");
+    document.querySelector(".cookie").className = "cookie run";
+
+    setTimeout(() => {
+      alert("ALL CLEAR!!");
+      localStorage.setItem("currentStageIndex", 0);
+      localStorage.removeItem("score");
+      localStorage.setItem("hp", cookie.defaultHpValue);
+      if (localStorage.getItem("highestScore") < stageInfo.totalScore) {
+        localStorage.setItem("highestScore", stageInfo.totalScore);
+      }
+      location.href = "index.html";
+    }, 1500);
   }
   callMap() {
-    for (let i = 0; i <= 100; i++) {
+    for (let i = 0; i <= 10; i++) {
       allJellyComProp.arr[i] = new Jelly(500 + i * 500, gameProp.screenHeight * 0.6, 100);
     }
-    for (let i = 0; i <= 100; i++) {
-      allObstacleComProp.arr[i] = new Obstacle(1500 + i * 1500, gameProp.screenHeight * 0.9 - 200, 100);
+    for (let i = 0; i <= 10; i++) {
+      allObstacleComProp.arr[i] = new Obstacle(1500 + i * 1500, gameProp.screenHeight * 0.9 - 200, 500);
     }
     // allObstacleComProp.arr[0] = new Obstacle(1000, 450, 500);
     // allObstacleComProp.arr[1] = new Obstacle(1100, 450, 500);
@@ -61,10 +127,12 @@ class Cookie {
     this.jumpMaxHeight = -250;
     this.jumpCount = 0;
     this.jumpTime = 30;
-    this.hpValue = 1000;
+    this.defaultHpValue = 1000;
+    this.hpValue = localStorage.getItem("hp") ? localStorage.getItem("hp") * 1 : this.defaultHpValue;
     this.hpProgress = 0;
-    this.defaultHpValue = this.hpValue;
     this.crashed = false;
+
+    this.minusHp(0);
   }
   position() {
     return {
@@ -75,7 +143,7 @@ class Cookie {
     };
   }
   keyMotion() {
-    if (!gameProp.paused && !gameProp.gameOver) {
+    if (!gameProp.paused && !gameProp.gameOver && !gameProp.gameClear) {
       if (this.jumpState === 0 && key.keyDown["slide"]) {
         this.el.classList.add("slide");
         // document.querySelector(".cookie_box").style.transform = "rotate(90deg)";
@@ -146,9 +214,7 @@ class Cookie {
   }
   minusHp(hp) {
     const hpBox = document.querySelector(".game_info .hp span");
-    // console.log(hpBox);
     this.hpValue += hp;
-    console.log(this.hpValue);
     this.hpProgress = Math.max(0, (this.hpValue / this.defaultHpValue) * 100);
     hpBox.style.width = this.hpProgress + "%";
 
@@ -159,7 +225,18 @@ class Cookie {
   dead() {
     this.el.className = "cookie dead";
     gameProp.gameOver = true;
-    stageInfo.stage.stageGuide("GAME OVER");
+    stageInfo.currentStage.stageGuide("GAME OVER");
+
+    setTimeout(() => {
+      alert("GAME OVER!!");
+      localStorage.setItem("currentStageIndex", 0);
+      localStorage.removeItem("score");
+      localStorage.setItem("hp", this.defaultHpValue);
+      if (localStorage.getItem("highestScore") < stageInfo.totalScore) {
+        localStorage.setItem("highestScore", stageInfo.totalScore);
+      }
+      location.href = "index.html";
+    }, 1500);
   }
 }
 

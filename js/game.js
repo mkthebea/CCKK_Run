@@ -19,15 +19,16 @@ const allObstacleComProp = {
 };
 
 const stageInfo = {
-  stage: [],
-  currentStageIndex: 0,
-  totalScore: 0,
+  stage: [stage1, stage2],
+  currentStage: {},
+  currentStageIndex: localStorage.getItem("currentStageIndex"),
+  totalScore: localStorage.getItem("score") * 1,
   gameOver: false,
 };
 
 const gameBackground = {
   gameBox: document.querySelector(".game"),
-  groundBox: document.querySelector(".ground"),
+  groundBox: document.querySelector(".ground"), //gameBox에 포함됨
 };
 
 const gameProp = {
@@ -46,7 +47,7 @@ const pause = () => {
   } else {
     gameProp.paused = true;
     document.querySelector(".cookie").classList.add("paused");
-    stageInfo.stage[stageInfo.currentStageIndex].stageGuide("PAUSED");
+    stageInfo.currentStage.stageGuide("PAUSED");
   }
 };
 
@@ -64,13 +65,19 @@ const renderGame = () => {
         arr.crashObstacle();
       }
     });
-  } else if (gameProp.gameOver) {
+  } else if (gameProp.gameOver || gameProp.gameClear) {
     document.querySelector(".cookie_box").style.transform = `translate(${cookie.movex}px, 0px)`;
   }
-  if (cookie.movex >= stageInfo.stage[stageInfo.currentStageIndex].length) {
-    gameProp.gameClear = true;
-    stageInfo.stage[stageInfo.currentStageIndex].stageEnd();
-    // stageInfo.currentStageIndex++;
+  if (cookie.movex >= stageInfo.currentStage.length && !gameProp.gameClear) {
+    if (stageInfo.currentStageIndex == stageInfo.stage.length - 1) {
+      gameProp.gameClear = true;
+      stageInfo.currentStage.allClear();
+    } else {
+      gameProp.gameClear = true;
+      console.log(stageInfo.currentStageIndex);
+      stageInfo.currentStage.stageClear();
+      // stageInfo.currentStageIndex++;
+    }
   }
   window.requestAnimationFrame(renderGame);
 };
@@ -101,9 +108,16 @@ const windowEvent = () => {
 let cookie;
 
 const init = () => {
+  // localStorage.setItem("score", 0);
+  document.querySelector(".score_box").innerText = localStorage.getItem("score") ? localStorage.getItem("score") : 0;
   cookie = new Cookie(".cookie");
-  newStage = new Stage(stage1);
-  stageInfo.stage.push(newStage);
+  newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
+  // console.log(stageInfo.currentStageIndex);
+  stageInfo.currentStage = newStage;
+  // newStage = new Stage(stage2);
+  // stageInfo.stage.push(newStage);
+  // console.log(stageInfo.stage);
+
   // stageInfo.stage.callMap();
 
   windowEvent();
