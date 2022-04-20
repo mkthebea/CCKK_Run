@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'cookieRun Regular';
+  src: url('../CookieRunFont_OTF/CookieRun\ Regular.otf') format('truetype');
+}
+@font-face {
+  font-family: 'cookieRun Black';
+  src: url('../CookieRunFont_OTF/CookieRun\ Black.otf.otf') format('truetype');
+}
+@font-face {
+  font-family: 'cookieRun Bold';
+  src: url('../CookieRunFont_OTF/CookieRun\ Bold.otf') format('truetype');
+}
+
+body {
+  font-family: 'cookieRun Regular';
+}
+
 .game_app {
   overflow: hidden;
   position: relative;
@@ -43,7 +60,7 @@
 .game_info .score_box {
   display: flex;
   float: left;
-  font-weight: bolder;
+  font-family: 'cookieRun Bold';
   text-align: center;
   width: 10%;
   right: 10%;
@@ -70,8 +87,8 @@
 .game_info .cookie_profile .cookie_img img {
   height: 100%;
   background-color: white;
-  border-radius: 30px;
-  border: 5px solid rgb(247, 178, 4);
+  border-radius: 20px;
+  border: 3px solid rgb(247, 178, 4);
 }
 
 .game_info .cookie_profile .cookie_desc {
@@ -79,12 +96,14 @@
   left: 0;
   color: #fff;
   width: 60%;
+  text-shadow: 1px 1px 1px #000;
 }
 .game_info .cookie_profile .cookie_desc .cookie_name {
   font-size: 25px;
   font-weight: bolder;
   color: #fff;
   padding: 3%;
+  text-shadow: 1px 1px 1px #000;
 }
 /* .game_info .cookie_profile .cookie_desc .cookie_story {
 } */
@@ -92,15 +111,26 @@
 .game_info .hp {
   display: flex;
   align-items: center;
-  float: left;
+  justify-content: center;
+  /* float: left; */
   width: 50%;
+  height: 100%;
+}
+.game_info .hp .hp_img {
+  display: flex;
+  /* width: 10%; */
+  height: 60%;
+}
+.game_info .hp .hp_background {
+  display: flex;
+  width: 100%;
   height: 10px;
+  background-color: white;
   border: 2px solid #fff;
   border-radius: 5px;
-  background-color: white;
 }
-.game_info .hp span {
-  display: block;
+.game_info .hp .hp_background .hp_progress {
+  display: flex;
   width: 100%;
   height: 100%;
   background-color: red;
@@ -110,17 +140,21 @@
 
 .game_info #pause_button {
   display: flex;
-  /* margin-top: 35px; */
+  justify-content: center;
+  align-items: center;
   margin-right: 10px;
   height: 30%;
   width: 7%;
-  color: #fff;
-  font-size: 20px;
   background-color: rgb(247, 178, 4);
   border-radius: 5px;
-  border-width: 2px;
+  border-width: 3px;
   border-color: #fff;
-  text-align: center;
+}
+.game_info #pause_button .pause_button_text {
+  font-family: 'cookieRun Regular';
+  color: #fff;
+  font-size: 20px;
+  /* text-shadow: 1px 1px 1px #000; */
 }
 
 
@@ -244,23 +278,12 @@
 
 .jelly {
   position: absolute;
-  width: 70px;
-  height: 70px;
-  background-image: url("../lib/jelly/jelly_bean.png");
-  background-size: 70px 70px;
+  width: 51px;
+  height: 67.5px;
+  background-image: url("../lib/jelly/blue_jelly_bean.png");
+  background-size: 51px 67.5px;
   z-index: 10;
   /* background-color: blue; */
-}
-
-.obstacle {
-  position: absolute;
-  width: 180px;
-  height: 200px;
-  /* bottom: 63%; */
-  background-image: url("../lib/obstacles/yellow_cone.png");
-  background-size: 180px 200px;
-  z-index: 10;
-  /* background-color: red; */
 }
 
 @keyframes stageStart {
@@ -275,10 +298,9 @@
   }
 }
 
-
 .stage_box {
   position: absolute;
-  font-weight: bolder;
+  font-family: 'cookieRun Bold';
   z-index: 30;
   left: 50%;
   top: 50%;
@@ -295,7 +317,7 @@
 }
 .paused_box {
   position: absolute;
-  font-weight: bolder;
+  font-family: 'cookieRun Bold';
   z-index: 30;
   left: 50%;
   top: 50%;
@@ -309,3 +331,110 @@
 	-webkit-text-stroke-color: white;
 }
 
+
+@keyframes snacks {
+  0% {
+    background-position-x: 0px;
+  }
+  99% {
+    background-position-x: -445px;
+  }
+  100% {
+    background-position-x: -356px;
+  }
+}
+@keyframes clocks {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -400px;
+  }
+}
+@keyframes table {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -750px;
+  }
+}
+
+.obstacle {
+  position: absolute;
+  width: 180px;
+  height: 200px;
+  /* bottom: 63%; */
+  background-image: url("../lib/obstacles/yellow_cone.png");
+  background-size: 180px 200px;
+  z-index: 10;
+  /* background-color: red; */
+}
+
+.obstacle.snacks {
+  /* 2단 */
+  position: absolute;
+  width: 89px;
+  height: 247px;
+  background-image: url("../lib/obstacles/snacks.png");
+  background-size: 445px 247px;
+  z-index: 10;
+  animation: snacks 1s forwards steps(5); 
+  /* animation-fill-mode: forwards;*/
+}
+.obstacle.cake {
+  /* 2단 */
+  position: absolute;
+  width: 89px;
+  height: 247px;
+  background-image: url("../lib/obstacles/cake1.png");
+  background-size: 89px 247px;
+  z-index: 10;
+}
+.obstacle.pink_crystal {
+  /* 2단 */
+  position: absolute;
+  width: 89px;
+  height: 247px;
+  background-image: url("../lib/obstacles/pink_crystal.png");
+  background-size: 89px 247px;
+  z-index: 10;
+}
+.obstacle.clocks {
+  /* 2단 */
+  position: absolute;
+  width: 100px;
+  height: 247px;
+  background-image: url("../lib/obstacles/clock.png");
+  background-size: 400px 247px;
+  z-index: 10;
+  animation: clocks 1s infinite steps(4); 
+}
+.obstacle.green_crystal {
+  /* 1단 */
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("../lib/obstacles/green_crystal.png");
+  background-size: 100px 100px;
+  z-index: 10;
+}
+.obstacle.mini_snack {
+  /* 1단 */
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("../lib/obstacles/mini_snack.png");
+  background-size: 100px 100px;
+  z-index: 10;
+}
+.obstacle.table {
+  /* 1단 */
+  position: absolute;
+  width: 150px;
+  height: 100px;
+  background-image: url("../lib/obstacles/table.png");
+  background-size: 750px 100px;
+  z-index: 10;
+  animation: table 1s infinite steps(5); 
+}

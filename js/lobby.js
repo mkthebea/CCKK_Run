@@ -1,5 +1,5 @@
 let rank = "UNRANKED";
-let rankImgUrl = "url('../lib/ranks/No_rank.png')";
+let rankImgUrl = "url('./lib/ranks/No_rank.png')";
 const rankGuideBox = document.querySelector(".rank_guide");
 
 const myPage = () => {
@@ -42,19 +42,19 @@ const init = () => {
   rankGuideBox.style.display = "none";
   document.querySelector(".my_page").style.display = "none";
 
-  if (highestScore >= 1700) {
+  if (highestScore >= 12600) {
     rank = "RAINBOW";
     rankImgUrl = "url('./lib/ranks/Rainbow.png')";
-  } else if (highestScore >= 1500) {
+  } else if (highestScore >= 10500) {
     rank = "DIAMOND";
     rankImgUrl = "url('./lib/ranks/Diamond.png')";
-  } else if (highestScore >= 1200) {
+  } else if (highestScore >= 8400) {
     rank = "RUBY";
     rankImgUrl = "url('./lib/ranks/Ruby.png')";
-  } else if (highestScore >= 1000) {
+  } else if (highestScore >= 6300) {
     rank = "GOLD";
     rankImgUrl = "url('./lib/ranks/Gold.png')";
-  } else if (highestScore >= 700) {
+  } else if (highestScore >= 4200) {
     rank = "SILVER";
     rankImgUrl = "url('./lib/ranks/Silver.png')";
   } else if (highestScore > 0) {

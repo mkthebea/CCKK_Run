@@ -19,7 +19,7 @@ const allObstacleComProp = {
 };
 
 const stageInfo = {
-  stage: [stage1, stage2],
+  stage: [stage1, stage2, stage3],
   currentStage: {},
   currentStageIndex: localStorage.getItem("currentStageIndex"),
   totalScore: localStorage.getItem("score") * 1,
@@ -74,7 +74,6 @@ const renderGame = () => {
       stageInfo.currentStage.allClear();
     } else {
       gameProp.gameClear = true;
-      console.log(stageInfo.currentStageIndex);
       stageInfo.currentStage.stageClear();
       // stageInfo.currentStageIndex++;
     }
@@ -109,11 +108,12 @@ let cookie;
 
 const init = () => {
   // localStorage.setItem("score", 0);
-  document.querySelector(".score_box").innerText = localStorage.getItem("score") ? localStorage.getItem("score") : 0;
   cookie = new Cookie(".cookie");
+  document.querySelector(".score_box").innerText = localStorage.getItem("score") ? localStorage.getItem("score") : 0;
   newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
-  // console.log(stageInfo.currentStageIndex);
   stageInfo.currentStage = newStage;
+  // console.log(stageInfo.currentStageIndex);
+
   // newStage = new Stage(stage2);
   // stageInfo.stage.push(newStage);
   // console.log(stageInfo.stage);

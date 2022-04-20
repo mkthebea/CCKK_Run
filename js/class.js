@@ -1,27 +1,33 @@
 class Stage {
   constructor(stage) {
     this.stageName = stage.name;
-    // this.isStart = false;
     this.backgroundUrl = stage.backgroundUrl;
     this.groundUrl = stage.groundUrl;
     this.length = stage.length;
-    // console.log(this.length);
+    this.speed = stage.speed;
+    this.damage = stage.damage;
+    this.jumpObstacle = stage.jumpObstacle;
+    this.jumpObstaclePosition = stage.jumpObstaclePosition;
+    this.doubleJumpObstacle = stage.doubleJumpObstacle;
+    this.doubleJumpObstaclePosition = stage.doubleJumpObstaclePosition;
 
     this.init();
     this.stageStart();
   }
   init() {
+    cookie.speed = this.speed;
     gameBackground.gameBox.style.backgroundImage = `url(${this.backgroundUrl})`;
     gameBackground.groundBox.style.backgroundImage = `url(${this.groundUrl})`;
     this.callMap();
   }
   stageStart() {
-    // this.isStart = true;
     this.stageGuide(`START ${this.stageName}`);
   }
   stageClear() {
-    // this.isStart = false;
     this.stageGuide("STAGE CLEAR");
+    stageInfo.currentStageIndex++;
+    localStorage.setItem("currentStageIndex", stageInfo.currentStageIndex);
+    localStorage.setItem("hp", cookie.hpValue);
     localStorage.setItem("score", stageInfo.totalScore);
     if (localStorage.getItem("highestScore") < stageInfo.totalScore) {
       localStorage.setItem("highestScore", stageInfo.totalScore);
@@ -36,12 +42,20 @@ class Stage {
     setTimeout(() => {
       const nextStage = confirm("다음 스테이지?");
       if (nextStage) {
-        stageInfo.currentStageIndex++;
+        // stageInfo.currentStageIndex++;
 
         cookie.movex = 0;
         gameBackground.gameBox.style.transform = `translateX(${0}px)`;
 
+        allJellyComProp.arr.forEach((j) => {
+          console.log(j);
+          j.el.remove();
+        });
         allJellyComProp.arr.splice(0);
+
+        allObstacleComProp.arr.forEach((o) => {
+          o.el.remove();
+        });
         allObstacleComProp.arr.splice(0);
 
         newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
@@ -49,32 +63,28 @@ class Stage {
 
         gameProp.gameClear = false;
       } else {
-        stageInfo.currentStageIndex++;
-        localStorage.setItem("currentStageIndex", stageInfo.currentStageIndex);
-        localStorage.setItem("hp", cookie.hpValue);
+        // stageInfo.currentStageIndex++;
+        // localStorage.setItem("currentStageIndex", stageInfo.currentStageIndex);
+        // localStorage.setItem("hp", cookie.hpValue);
 
         cookie.movex = 0;
         gameBackground.gameBox.style.transform = `translateX(${0}px)`;
 
+        allJellyComProp.arr.forEach((j) => {
+          console.log(j);
+          j.el.remove();
+        });
         allJellyComProp.arr.splice(0);
+
+        allObstacleComProp.arr.forEach((o) => {
+          o.el.remove();
+        });
         allObstacleComProp.arr.splice(0);
         location.href = "index.html";
       }
     }, 1500);
-
-    // var link = "file:///C:/Users/5596m/Desktop/test.html";
-    // window.location.href = link;
-    // // window.location.replace(link);
-    // setTimeout(() => window.open(link), 5000);
-    // window.open(link);
   }
   allClear() {
-    // const confirmClear = confirm("ALL CREAR!!");
-    // console.log(confirmClear);
-    // if (confirmClear) {
-    //   location.href = "index.html";
-    //   console.log(location.href);
-    // }
     this.stageGuide("STAGE CLEAR");
     document.querySelector(".cookie").className = "cookie run";
 
@@ -90,16 +100,45 @@ class Stage {
     }, 1500);
   }
   callMap() {
-    for (let i = 0; i <= 10; i++) {
-      allJellyComProp.arr[i] = new Jelly(500 + i * 500, gameProp.screenHeight * 0.6, 100);
+    // let obstaclePosition = [];
+    // for (let i = 0; i < this.obstacles; i++) {
+    //   const r = Math.floor(Math.random() * ((this.length - 1500) / 500) + 1);
+    //   if (obstaclePosition.indexOf(500 + 500 * r) === -1) {
+    //     obstaclePosition.push(500 + 500 * r);
+    //   } else {
+    //     i--;
+    //   }
+    // }
+    // console.log(obstaclePosition);
+    this.jumpObstaclePosition.forEach((o) => {
+      allObstacleComProp.arr.push(new Obstacle(o, gameProp.screenHeight * 0.9 - 100, this.damage, this.jumpObstacle));
+    });
+    this.doubleJumpObstaclePosition.forEach((o) => {
+      allObstacleComProp.arr.push(new Obstacle(o, gameProp.screenHeight * 0.9 - 247, this.damage, this.doubleJumpObstacle));
+    });
+
+    for (let i = 0; i <= (this.length - 500) / 100; i++) {
+      const jellyPosition = 500 + i * 100;
+      if (this.doubleJumpObstaclePosition.indexOf(jellyPosition + 100) === -1 && this.jumpObstaclePosition.indexOf(jellyPosition + 100) === -1) {
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.6, 100);
+      } else if (this.doubleJumpObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.9 - 370, 100);
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.9 - 370, 100);
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.9 - 370, 100);
+        i += 3;
+      } else if (this.jumpObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.9 - 290, 100);
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.9 - 290, 100);
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.9 - 290, 100);
+        i += 3;
+      }
     }
-    for (let i = 0; i <= 10; i++) {
-      allObstacleComProp.arr[i] = new Obstacle(1500 + i * 1500, gameProp.screenHeight * 0.9 - 200, 500);
-    }
-    // allObstacleComProp.arr[0] = new Obstacle(1000, 450, 500);
-    // allObstacleComProp.arr[1] = new Obstacle(1100, 450, 500);
-    // allObstacleComProp.arr[2] = new Obstacle(2000, 450, 500);
-    // allObstacleComProp.arr[3] = new Obstacle(2900, 250, 500);
+    // for (let i = 0; i <= 10; i++) {
+    //   allJellyComProp.arr[i] = new Jelly(500 + i * 100, gameProp.screenHeight * 0.6, 100);
+    // }
+    // for (let i = 0; i <= 10; i++) {
+    //   allObstacleComProp.arr[i] = new Obstacle(1500 + i * 1500, gameProp.screenHeight * 0.9 - 247, this.damage);
+    // }
   }
   stageGuide(text) {
     this.parentNode = document.querySelector(".game_app");
@@ -213,7 +252,7 @@ class Cookie {
     // }
   }
   minusHp(hp) {
-    const hpBox = document.querySelector(".game_info .hp span");
+    const hpBox = document.querySelector(".game_info .hp .hp_background .hp_progress");
     this.hpValue += hp;
     this.hpProgress = Math.max(0, (this.hpValue / this.defaultHpValue) * 100);
     hpBox.style.width = this.hpProgress + "%";
@@ -286,10 +325,10 @@ class Jelly {
 }
 
 class Obstacle {
-  constructor(x, y, damage) {
+  constructor(x, y, damage, className) {
     this.parentNode = document.querySelector(".game");
     this.el = document.createElement("div");
-    this.el.className = "obstacle";
+    this.el.className = className;
     this.x = x;
     this.y = y;
     this.damage = damage;
