@@ -5,6 +5,7 @@
 	<title>DAL GGA</title>
     <meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./css/lobby.css">
+    <script src="https://kit.fontawesome.com/3a115195d8.js" crossorigin="anonymous"></script>
 
     <style type="text/css">    
         body {margin:0;}
@@ -13,10 +14,34 @@
 <body>
     <div class="lobby">
         <div class="cookie_lobby"></div>
-        <button class="play_button" onclick="location.href='game.html'">Play</button>
-        <div class="highest_score"></div>
-        <div class="score"></div>
-        <button class="reset_button" onclick="reset()">Reset</button>
+        
+        <div class="top_bar">
+            <div class="rank_box">
+                <div class="rank_image" onclick="rankGuide()"></div>
+                <div class="rank"><div class="rank_text"></div></div>
+            </div>
+            <div class="score_box">
+                <div class="highest_score"><div class="highest_score_text"></div></div>
+                <div class="score"><div class="score_text"></div></div>
+            </div>
+            <div class="setting_box">
+                <button class="my_page_button" onclick="myPage()">
+                    <div class="my_page_text">내 정보</div>
+                </button>
+                <button class="reset_button" onclick="reset()">
+                    <div class="reset_button_icon">
+                        <i class="fa-solid fa-rotate-right"></i>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <button class="play_button" onclick="location.href='game.html'">Play!</button>
+        <div class="rank_guide">
+            <div class="rank_guide_text">
+                -<br>Bronze<br>Silver<br>Gold<br>Ruby<br>Diamond<br>Rainbow
+            </div>
+        </div>
+        <div class="my_page">추가 예정</div>
     </div>
 
     <script type="text/javascript" src="./js/lobby.js" charset="utf-8"></script>

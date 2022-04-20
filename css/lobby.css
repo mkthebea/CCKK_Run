@@ -1,3 +1,20 @@
+@font-face {
+  font-family: 'cookieRun Regular';
+  src: url('../CookieRunFont_OTF/CookieRun\ Regular.otf') format('truetype');
+}
+@font-face {
+  font-family: 'cookieRun Black';
+  src: url('../CookieRunFont_OTF/CookieRun\ Black.otf.otf') format('truetype');
+}
+@font-face {
+  font-family: 'cookieRun Bold';
+  src: url('../CookieRunFont_OTF/CookieRun\ Bold.otf') format('truetype');
+}
+
+body {
+  font-family: 'cookieRun Regular';
+}
+
 .lobby {
   overflow: hidden;
   position: relative;
@@ -38,26 +55,187 @@
   animation: cookie_idle 1s infinite;
 }
 
+
 .lobby .play_button {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    margin: 30px;
-    width: 20%;
-    height: 10%;
-    background-color: orange;
-    border-radius: 10px;
-    border-color: whitesmoke;
-    border-width: 5px;
-    font-size: 50px;
-    color: white;
+  font-family: 'cookieRun Bold';
+  position: absolute;
+  right: 5vw;
+  bottom: 40px;
+  width: 15%;
+  height: 80px;
+  background-color: orange;
+  border-radius: 10px;
+  border-color: wheat;
+  border-width: 5px;
+  font-size: 50px;
+  color: white;
+  text-shadow: 1.5px 1.5px 1.5px #000;
+  /* text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000; */
 }
 
-.lobby .highest_score {
-    display: block;
-    color: white;
+.lobby .top_bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 135px;
+  width: 90vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
-.lobby .score {
-    display: block;
-    color: white;
+
+.lobby .top_bar .setting_box {
+  display: flex;
+  width: 16.6%;
+  justify-content: space-between;
+  align-items: center;
+}
+.lobby .top_bar .setting_box .my_page_button {
+  font-family: 'cookieRun Regular';
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  background-color: #0f2897;
+  /* background-color: orange; */
+  border-radius: 10px;
+  border-color: rgb(144, 165, 250);
+  /* border-color: wheat; */
+  border-width: 4px;
+}
+.lobby .top_bar .setting_box .my_page_button .my_page_text {
+  font-size: 25px;
+  color: rgb(144, 165, 250);
+  text-shadow: 1px 1px 1px #000;
+}
+.lobby .top_bar .setting_box .reset_button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #0f2897;
+  /* background-color: orange; */
+  border-radius: 50px;
+  border-color: rgb(144, 165, 250);
+  /* border-color: wheat; */
+  border-width: 4px;
+}
+.lobby .top_bar .setting_box .reset_button .reset_button_icon {
+  font-size: 26px;
+  color: rgb(144, 165, 250);
+  text-shadow: 1px 1px 1px #000;
+}
+
+.lobby .top_bar .score_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lobby .top_bar .score_box .highest_score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 230px;
+  border: 4px double rgb(144, 165, 250);
+  border-radius: 10px;
+  background-color: rgba(0, 34, 255, 0.368);
+}
+.lobby .top_bar .score_box .highest_score .highest_score_text {
+  color: white;
+  font-size: 25px;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+.lobby .top_bar .score_box .score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 50px;
+}
+.lobby .top_bar .score_box .score .score_text {
+  color: white;
+  font-size: 20px;
+  text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+.lobby .top_bar .rank_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.lobby .top_bar .rank_box .rank_image {
+  display: flex;
+  width: 146px;
+  height: 90px;
+  background-image: url('../lib/ranks/No_rank.png');
+  background-size: 146px 90px;
+}
+.lobby .top_bar .rank_box .rank {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 146px;
+  height: 20px;
+  padding: 5px;
+}
+.lobby .top_bar .rank_box .rank .rank_text {
+  font-family: 'cookieRun Bold';
+  color: white;
+  font-size: 20px;
+}
+
+@keyframes guide_roll {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 289.6px;
+  }
+}
+
+.lobby .rank_guide {
+  position:absolute;
+  display: none;
+  overflow: hidden;
+  left: 5vw;
+  top: 140px;
+  width: 146px;
+  height: 289.6px;
+  background-image: url('../lib/ranks/rank_Guide.PNG');
+  background-size: 146px 289.6px;
+  /* background-repeat: no-repeat; */
+  z-index: 10;
+  animation: guide_roll 1s forwards;
+  border: 4px solid wheat;
+  border-radius: 3px;
+}
+.lobby .rank_guide .rank_guide_text {
+  text-align: right;
+  vertical-align: middle;
+  line-height: 41.3px;
+  padding-right: 10px;
+}
+
+.lobby .my_page {
+  position: absolute;
+  display: none;
+  width: 50vw;
+  height: 60vh;
+  top: 50%;
+  left: 50%;
+  margin-top: -30vh;
+  margin-left: -25vw;
+  background-color: orange;
+  border: 5px double wheat;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  font-size: 50px;
 }

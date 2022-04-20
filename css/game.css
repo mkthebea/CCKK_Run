@@ -46,8 +46,6 @@
   font-weight: bolder;
   text-align: center;
   width: 10%;
-  /* position: absolute; */
-  /* margin-top: 14px; */
   right: 10%;
   color: rgb(247, 178, 4);
   font-size: 50px;
@@ -262,7 +260,7 @@
   background-image: url("../lib/obstacles/yellow_cone.png");
   background-size: 180px 200px;
   z-index: 10;
-  background-color: red;
+  /* background-color: red; */
 }
 
 @keyframes stageStart {
