@@ -160,10 +160,10 @@ body {
 
 @keyframes cookie_run{
     0% {
-      background-position-x: 0px;
+      background-position-x: 0vh;
     }
     100% {
-      background-position-x: -1791px;
+      background-position-x: -196vh;
     }
   }
 @keyframes cookie_slide{
@@ -187,10 +187,10 @@ body {
   }
   @keyframes cookie_jump_double {
     0% {
-      background-position-x: 0px;
+      background-position-x: 0vh;
     }
     100% {
-      background-position-x: -2662px;
+      background-position-x: -308vh;
     }
   }
   @keyframes blink_effect {
@@ -200,20 +200,19 @@ body {
   }
 
 .cookie_box {
-    position: fixed;
-    left: 0;
-    bottom: 10%;
-    width: 242.5px;
-    height: 269px;
-    will-change: transform;
-    /* background-color: red; */
+  position: fixed;
+  left: 0;
+  bottom: 10%;
+  width: 28vh;
+  height: 30vh;
+  will-change: transform;
+  z-index: 20;
+  /* background-color: red; */
 }
 
-/* .cookie_box .cookie {
-    height: 100%;
-    background-image: url("../lib/images/gingerBread_idle.png");
-    background-size: 256px 270px;
-} */
+.cookie_box .cookie {
+    /* background-color: red; */
+}
 .cookie_box .cookie.paused {
   animation: none !important;
 }
@@ -223,32 +222,32 @@ body {
 .cookie_box .cookie.run {
   height: 100%;
   background-image: url("../lib/images/gingerMK_run.png");
-  background-size: 1791px 270px;
+  background-size: 196vh 30vh;
   animation: cookie_run .4s infinite steps(7);
 }
 .cookie_box .cookie.slide {
   position: relative;
-  width: 134px;
-  height: 360px;
+  width: 15vh;
+  height: 40vh;
   background-image: url("../lib/images/gingerMK_slide.PNG");
-  background-size: 134px 360px;
+  background-size: 15vh 40vh;
   animation: none;
   transform: rotate(270deg);
-  bottom: -19px;
+  bottom: -3vh;
   /* left: 110px; */
   /* animation: cookie_slide .2s infinite steps(2); */
 }
 .cookie_box .cookie.jump {
   height: 100%;
   background-image: url("../lib/images/gingerMK_jump_one.png");
-  background-size: 242.5px 269px;
+  background-size: 28vh 30vh;
   animation: none;
   /* animation: cookie_slide .5s infinite steps(2); */
 }
 .cookie_box .cookie.jump.double {
   height: 100%;
   background-image: url("../lib/images/gingerMK_jump_double.png");
-  background-size: 2662px 269px;
+  background-size: 308vh 30vh;
   animation: cookie_jump_double .5s infinite steps(11);
 }
 .cookie_box .cookie.jump.down,  .cookie_box .cookie.jump.down.slide{
@@ -257,7 +256,7 @@ body {
   height: 100%;
   width: 100%;
   background-image: url("../lib/images/gingerMK_jump_down.png");
-  background-size: 242.5px 269px;
+  background-size: 28vh 30vh;
   transform: none;
 }
 .cookie_box .cookie.crashed {
@@ -269,19 +268,19 @@ body {
 }
 .cookie_box .cookie.dead {
   background-image: url('../lib/images/gingerBrave_dead.png');
-  background-size: 242.5px 269px;
-  width: 242.5px;
-  height: 269px;
+  background-size: 28vh 30vh;
+  width: 100%;
+  height: 100%;
   animation: none !important;
   /* animation: none; */
 }
 
 .jelly {
   position: absolute;
-  width: 51px;
-  height: 67.5px;
+  width: 6vh;
+  height: 7.5vh;
   background-image: url("../lib/jelly/blue_jelly_bean.png");
-  background-size: 51px 67.5px;
+  background-size: 6vh 7.5vh;
   z-index: 10;
   /* background-color: blue; */
 }
@@ -345,34 +344,58 @@ body {
 }
 @keyframes clocks {
   0% {
-    background-position-x: 0px;
+    background-position-x: 0vh;
   }
   100% {
-    background-position-x: -400px;
+    background-position-x: -60vh;
   }
 }
 @keyframes table {
   0% {
-    background-position-x: 0px;
+    background-position-x: 0vh;
   }
   100% {
-    background-position-x: -750px;
+    background-position-x: -75vh;
+  }
+}
+@keyframes long_crystal {
+  0% {
+    background-position-x: 0vh;
+  }
+  100% {
+    background-position-x: -60vh;
   }
 }
 
 .obstacle {
   position: absolute;
-  width: 180px;
+  /* width: 180px;
   height: 200px;
-  /* bottom: 63%; */
   background-image: url("../lib/obstacles/yellow_cone.png");
-  background-size: 180px 200px;
+  background-size: 180px 200px; */
   z-index: 10;
   /* background-color: red; */
 }
 
-.obstacle.snacks {
+.obstacle.clocks {
   /* 2단 */
+  position: absolute;
+  width: 15vh;
+  height: 40vh;
+  background-image: url("../lib/obstacles/clock.png");
+  background-size: 60vh 40vh;
+  animation: clocks 1s infinite steps(4); 
+}
+.obstacle.pink_crystal {
+  /* 2단 */
+  position: absolute;
+  width: 15vh;
+  height: 40vh;
+  background-image: url("../lib/obstacles/pink_crystal.png");
+  background-size: 15vh 40vh;
+}
+/* .obstacle.snacks {
+  2단
   position: absolute;
   width: 89px;
   height: 247px;
@@ -380,61 +403,63 @@ body {
   background-size: 445px 247px;
   z-index: 10;
   animation: snacks 1s forwards steps(5); 
-  /* animation-fill-mode: forwards;*/
-}
+  animation-fill-mode: forwards;
+} */
 .obstacle.cake {
   /* 2단 */
   position: absolute;
-  width: 89px;
-  height: 247px;
+  width: 15vh;
+  height: 40vh;
   background-image: url("../lib/obstacles/cake1.png");
-  background-size: 89px 247px;
-  z-index: 10;
-}
-.obstacle.pink_crystal {
-  /* 2단 */
-  position: absolute;
-  width: 89px;
-  height: 247px;
-  background-image: url("../lib/obstacles/pink_crystal.png");
-  background-size: 89px 247px;
-  z-index: 10;
-}
-.obstacle.clocks {
-  /* 2단 */
-  position: absolute;
-  width: 100px;
-  height: 247px;
-  background-image: url("../lib/obstacles/clock.png");
-  background-size: 400px 247px;
-  z-index: 10;
-  animation: clocks 1s infinite steps(4); 
-}
-.obstacle.green_crystal {
-  /* 1단 */
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background-image: url("../lib/obstacles/green_crystal.png");
-  background-size: 100px 100px;
-  z-index: 10;
-}
-.obstacle.mini_snack {
-  /* 1단 */
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  background-image: url("../lib/obstacles/mini_snack.png");
-  background-size: 100px 100px;
-  z-index: 10;
+  background-size: 15vh 40vh;
 }
 .obstacle.table {
   /* 1단 */
   position: absolute;
-  width: 150px;
-  height: 100px;
+  width: 15vh;
+  height: 15vh;
   background-image: url("../lib/obstacles/table.png");
-  background-size: 750px 100px;
-  z-index: 10;
+  background-size: 75vh 15vh;
   animation: table 1s infinite steps(5); 
+}
+.obstacle.green_crystal {
+  /* 1단 */
+  position: absolute;
+  width: 15vh;
+  height: 15vh;
+  background-image: url("../lib/obstacles/green_crystal.png");
+  background-size: 15vh 15vh;
+}
+.obstacle.mini_snack {
+  /* 1단 */
+  position: absolute;
+  width: 15vh;
+  height: 15vh;
+  background-image: url("../lib/obstacles/mini_snack.png");
+  background-size: 15vh 15vh;
+}
+.obstacle.lamp {
+  /* 슬라이드 */
+  position: absolute;
+  width: 30vh;
+  height: 70vh;
+  background-image: url('../lib/obstacles/lamp.png');
+  background-size: 30vh 70vh;
+}
+.obstacle.long_crystal {
+  /* 슬라이드 */
+  position: absolute;
+  width: 30vh;
+  height: 70vh;
+  background-image: url('../lib/obstacles/long_crystal.png');
+  background-size: 60vh 70vh;
+  animation: long_crystal 1s infinite steps(2);
+}
+.obstacle.knife {
+  /* 슬라이드 */
+  position: absolute;
+  width: 30vh;
+  height: 70vh;
+  background-image: url('../lib/obstacles/knife.png');
+  background-size: 30vh 70vh;
 }

@@ -75,7 +75,6 @@ const renderGame = () => {
     } else {
       gameProp.gameClear = true;
       stageInfo.currentStage.stageClear();
-      // stageInfo.currentStageIndex++;
     }
   }
   window.requestAnimationFrame(renderGame);
@@ -90,11 +89,12 @@ const windowEvent = () => {
   window.addEventListener("keydown", (e) => {
     if (key.keyValue[e.which] === "jump" && !key.keyDown["slide"]) {
       cookie.jumpState = cookie.jumpState === 0 ? 1 : cookie.jumpState === 1 ? 2 : 3;
+      // console.log(document.querySelector(".cookie").classList);
 
       if (cookie.jumpState === 2) {
         cookie.jumpTimer = 0;
       }
-      cookie.jumpCount++;
+      // cookie.jumpCount++;
     }
     key.keyDown[key.keyValue[e.which]] = true;
   });
@@ -125,5 +125,6 @@ const init = () => {
 };
 
 window.onload = () => {
+  window.resizeTo(1280, 800);
   init();
 };

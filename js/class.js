@@ -10,6 +10,8 @@ class Stage {
     this.jumpObstaclePosition = stage.jumpObstaclePosition;
     this.doubleJumpObstacle = stage.doubleJumpObstacle;
     this.doubleJumpObstaclePosition = stage.doubleJumpObstaclePosition;
+    this.slideObstacle = stage.slideObstacle;
+    this.slideObstaclePosition = stage.slideObstaclePosition;
 
     this.init();
     this.stageStart();
@@ -22,6 +24,10 @@ class Stage {
   }
   stageStart() {
     this.stageGuide(`START ${this.stageName}`);
+    document.querySelector(".cookie").className = "cookie run";
+    cookie.jumpState = 0;
+    cookie.movey = 0;
+    cookie.jumpTimer = 0;
   }
   stageClear() {
     this.stageGuide("STAGE CLEAR");
@@ -32,18 +38,11 @@ class Stage {
     if (localStorage.getItem("highestScore") < stageInfo.totalScore) {
       localStorage.setItem("highestScore", stageInfo.totalScore);
     }
-    cookie.jumpState = 0;
-    cookie.movey = 0;
-    cookie.jumpTimer = 0;
-    cookie.jumpCount = 0;
-
     document.querySelector(".cookie").className = "cookie run";
-    // document.querySelector(".cookie").classList.add("clear"); //clear 이미지 css에 추가할 것!!!!!!!!!!!!!!!!!
+
     setTimeout(() => {
       const nextStage = confirm("다음 스테이지?");
       if (nextStage) {
-        // stageInfo.currentStageIndex++;
-
         cookie.movex = 0;
         gameBackground.gameBox.style.transform = `translateX(${0}px)`;
 
@@ -63,10 +62,6 @@ class Stage {
 
         gameProp.gameClear = false;
       } else {
-        // stageInfo.currentStageIndex++;
-        // localStorage.setItem("currentStageIndex", stageInfo.currentStageIndex);
-        // localStorage.setItem("hp", cookie.hpValue);
-
         cookie.movex = 0;
         gameBackground.gameBox.style.transform = `translateX(${0}px)`;
 
@@ -100,36 +95,39 @@ class Stage {
     }, 1500);
   }
   callMap() {
-    // let obstaclePosition = [];
-    // for (let i = 0; i < this.obstacles; i++) {
-    //   const r = Math.floor(Math.random() * ((this.length - 1500) / 500) + 1);
-    //   if (obstaclePosition.indexOf(500 + 500 * r) === -1) {
-    //     obstaclePosition.push(500 + 500 * r);
-    //   } else {
-    //     i--;
-    //   }
-    // }
-    // console.log(obstaclePosition);
     this.jumpObstaclePosition.forEach((o) => {
-      allObstacleComProp.arr.push(new Obstacle(o, gameProp.screenHeight * 0.9 - 100, this.damage, this.jumpObstacle));
+      allObstacleComProp.arr.push(new Obstacle(o, gameProp.screenHeight * 0.75, this.damage, this.jumpObstacle));
     });
     this.doubleJumpObstaclePosition.forEach((o) => {
-      allObstacleComProp.arr.push(new Obstacle(o, gameProp.screenHeight * 0.9 - 247, this.damage, this.doubleJumpObstacle));
+      allObstacleComProp.arr.push(new Obstacle(o, gameProp.screenHeight * 0.5, this.damage, this.doubleJumpObstacle));
+    });
+    this.slideObstaclePosition.forEach((o) => {
+      allObstacleComProp.arr.push(new Obstacle(o, 0, this.damage, this.slideObstacle));
     });
 
     for (let i = 0; i <= (this.length - 500) / 100; i++) {
       const jellyPosition = 500 + i * 100;
-      if (this.doubleJumpObstaclePosition.indexOf(jellyPosition + 100) === -1 && this.jumpObstaclePosition.indexOf(jellyPosition + 100) === -1) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.6, 100);
+      if (
+        this.doubleJumpObstaclePosition.indexOf(jellyPosition + 100) === -1 &&
+        this.jumpObstaclePosition.indexOf(jellyPosition + 100) === -1 &&
+        this.slideObstaclePosition.indexOf(jellyPosition + 100) === -1
+      ) {
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.675, 100);
       } else if (this.doubleJumpObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.9 - 370, 100);
-        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.9 - 370, 100);
-        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.9 - 370, 100);
-        i += 3;
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.225, 100);
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.225, 100);
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.225, 100);
+        i += 2;
       } else if (this.jumpObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.9 - 290, 100);
-        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.9 - 290, 100);
-        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.9 - 290, 100);
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.475, 100);
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.475, 100);
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.475, 100);
+        i += 2;
+      } else if (this.slideObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.775, 100);
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.775, 100);
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.775, 100);
+        allJellyComProp.arr[i + 3] = new Jelly(jellyPosition + 300, gameProp.screenHeight * 0.775, 100);
         i += 3;
       }
     }
@@ -160,11 +158,10 @@ class Cookie {
     this.movex = 0;
     this.movey = 0;
     this.speed = 10;
-    this.jumpState = 0;
+    this.jumpState = 0; //0: 점프 가능(점프 안하는중), 1:1단 점프중, 2: 2단 점프중(점프 불가능), 3: 2단 점프중인데 또 눌렀을 때(2와 구분해 점프타이머 초기화시키지 않기 위해 설정)
     this.jumpSpeed = 10;
     this.jumpTimer = 0;
     this.jumpMaxHeight = -250;
-    this.jumpCount = 0;
     this.jumpTime = 30;
     this.defaultHpValue = 1000;
     this.hpValue = localStorage.getItem("hp") ? localStorage.getItem("hp") * 1 : this.defaultHpValue;
@@ -183,74 +180,80 @@ class Cookie {
   }
   keyMotion() {
     if (!gameProp.paused && !gameProp.gameOver && !gameProp.gameClear) {
+      // 슬라이드
       if (this.jumpState === 0 && key.keyDown["slide"]) {
         this.el.classList.add("slide");
-        // document.querySelector(".cookie_box").style.transform = "rotate(90deg)";
       }
-      if ((this.jumpState !== 0 && this.jumpCount <= 2) || this.jumpState === 3) {
-        // console.log("점프중, jumpState:  " + this.jumpState + "jumpCount: " + this.jumpCount);
-        this.el.classList.add("jump");
-        if (this.jumpCount === 2) {
-          this.el.classList.add("double");
-        }
-        this.el.classList.remove("down");
-
-        this.movey -= this.jumpSpeed;
-        this.jumpTimer++;
-        // console.log("jumpTimer++");
-      } else {
-        if (this.movey < 0) {
-          this.movey += this.jumpSpeed;
-        }
-        if (this.movey === 0) {
-          this.el.classList.remove("jump");
-          this.el.classList.remove("down");
-
-          this.jumpCount = 0;
-          this.jumpState = 0;
-        }
-      }
-      if (this.jumpTimer > this.jumpTime) {
-        this.jumpState = 0;
-        this.jumpTimer = 0;
-        this.el.classList.remove("double");
-        this.el.classList.add("down");
-      }
-
       if (!key.keyDown["slide"]) {
         this.el.classList.remove("slide");
       }
-    }
-  }
-  jump() {
-    if (this.jumpState) {
-      this.movey -= this.jumpSpeed;
-      this.jumpTimer++;
-    } else {
-      if (this.movey < this.jumpMaxHeight) {
-        this.movey += this.jumpSpeed;
+
+      //점프
+      if (this.jumpState > 0) {
+        //jumpState = 1 or 2 or 3일 때
+
+        //점프 타임 만료 시 내려오기
+        if (this.jumpTimer >= this.jumpTime) {
+          console.log(this.movey);
+          // debugger;
+          this.el.classList.remove("double");
+          this.el.classList.add("down");
+
+          if (this.movey < 0) {
+            // 땅에 닿기 전까지 내려오기
+            this.movey += this.jumpSpeed;
+          } else if (this.movey === 0) {
+            //다 내려오면 점프 상태 초기화, 타이머 초기화
+            this.el.classList.remove("jump");
+            this.el.classList.remove("down");
+
+            this.jumpState = 0;
+            this.jumpTimer = 0;
+          }
+        } else {
+          //점프 타임 만료 전, 즉 점프 중일 때 위로 이동
+          if (this.jumpState === 1) {
+            this.el.classList.add("jump");
+          }
+          if (this.jumpState === 2) {
+            this.el.classList.add("double");
+            this.el.classList.remove("down");
+          }
+          this.movey -= this.jumpSpeed;
+          this.jumpTimer++;
+        }
       }
     }
-    if (this.jumpTimer > 40) {
-      this.jumpState = false;
-      this.jumpTimer = 0;
-    }
-
-    // while (this.jumpState) {
-    //   do {
-    //     this.movey -= this.jumpSpeed;
-    //   } while (this.movey > this.jumpMaxHeight);
-    //   if (this.movey <= this.jumpMaxHeight) {
-    //     while (this.movey < 0) {
-    //       this.movey += this.jumpSpeed;
-    //     }
-    //   }
-    //   if (this.movey === 0) {
-    //     this.jumpState = false;
-    //     this.el.classList.remove("jump");
-    //   }
-    // }
   }
+  // jump() {
+  //   if (this.jumpState) {
+  //     this.movey -= this.jumpSpeed;
+  //     this.jumpTimer++;
+  //   } else {
+  //     if (this.movey < this.jumpMaxHeight) {
+  //       this.movey += this.jumpSpeed;
+  //     }
+  //   }
+  //   if (this.jumpTimer > 40) {
+  //     this.jumpState = false;
+  //     this.jumpTimer = 0;
+  //   }
+
+  //   // while (this.jumpState) {
+  //   //   do {
+  //   //     this.movey -= this.jumpSpeed;
+  //   //   } while (this.movey > this.jumpMaxHeight);
+  //   //   if (this.movey <= this.jumpMaxHeight) {
+  //   //     while (this.movey < 0) {
+  //   //       this.movey += this.jumpSpeed;
+  //   //     }
+  //   //   }
+  //   //   if (this.movey === 0) {
+  //   //     this.jumpState = false;
+  //   //     this.el.classList.remove("jump");
+  //   //   }
+  //   // }
+  // }
   minusHp(hp) {
     const hpBox = document.querySelector(".game_info .hp .hp_background .hp_progress");
     this.hpValue += hp;
@@ -350,14 +353,13 @@ class Obstacle {
   }
   crashObstacle() {
     if (
-      this.position().right > cookie.position().left &&
-      this.position().left < cookie.position().right &&
-      this.position().top > cookie.position().bottom &&
-      this.position().bottom < cookie.position().top
+      this.position().right - 10 > cookie.position().left &&
+      this.position().left + 10 < cookie.position().right &&
+      this.position().top - 10 > cookie.position().bottom &&
+      this.position().bottom + 10 < cookie.position().top
     ) {
       this.isCrashed = true;
       cookie.crashed = true;
-      // console.log("crashed");
       cookie.minusHp(this.damage * -1);
       document.querySelector(".cookie").classList.add("crashed");
 
@@ -365,8 +367,6 @@ class Obstacle {
         document.querySelector(".cookie").classList.remove("crashed");
         cookie.crashed = false;
       }, 1000);
-
-      // console.log(this.position(), cookie.position());
     }
   }
 }
