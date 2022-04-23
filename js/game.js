@@ -19,7 +19,7 @@ const allObstacleComProp = {
 };
 
 const stageInfo = {
-  stage: [stage1, stage2, stage3],
+  stage: [stage1, stage2, stage3, stage4],
   currentStage: {},
   currentStageIndex: localStorage.getItem("currentStageIndex"),
   totalScore: localStorage.getItem("score") * 1,

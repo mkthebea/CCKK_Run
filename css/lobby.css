@@ -55,6 +55,58 @@ body {
   animation: cookie_idle 1s infinite;
 }
 
+@keyframes notice {
+  0%{
+    background-size: 240px 142px;
+  }
+  50% {
+    left: 7vw - 6px;
+    bottom: 16.5px;
+    width: 252px;
+    height: 149px;
+    background-size: 252px 149px;
+    line-height: 141.5px;
+    font-size: 42px;
+  }
+  100% {
+    background-size: 240px 142px;
+  }
+}
+
+.lobby .notice {
+  font-family: 'cookieRun Bold';
+  color: red;
+  text-align: center;
+  line-height: 135px;
+  font-size: 40px;
+  position: absolute;
+  left: 7vw;
+  bottom: 20px;
+  width: 240px;
+  height: 142px;
+  background-image: url('../lib/lobby/notice.png');
+  background-size: 240px 142px;
+  text-shadow: 1px 1px 1px #000;
+  /* text-shadow: -2px 0 red, 0 2px red, 2px 0 red, 0 -2px red; */
+  animation: notice 2s infinite;
+}
+.lobby .notice_page {
+  position: absolute;
+  display: none;
+  width: 50vw;
+  height: 60vh;
+  top: 50%;
+  left: 50%;
+  margin-top: -30vh;
+  margin-left: -25vw;
+  background-color: orange;
+  border: 5px double wheat;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  font-size: 50px;
+}
+
 
 .lobby .play_button {
   font-family: 'cookieRun Bold';

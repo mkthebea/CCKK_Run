@@ -15,7 +15,7 @@ const stage1 = {
 
 const stage2 = {
   name: "STAGE2",
-  backgroundUrl: "./lib/backgrounds/game/pearl.png",
+  backgroundUrl: "./lib/backgrounds/game/purple_mud_double.jpeg",
   groundUrl: "./lib/backgrounds/ground/pink_crystal.png",
   length: 10000,
   jumpObstacle: "obstacle green_crystal",
@@ -35,10 +35,25 @@ const stage3 = {
   length: 10000,
   jumpObstacle: "obstacle mini_snack",
   jumpObstaclePosition: [2000, 9000],
-  doubleJumpObstacle: "obstacle cake",
+  doubleJumpObstacle: "obstacle snacks",
   doubleJumpObstaclePosition: [4000, 6000],
   slideObstacle: "obstacle knife",
   slideObstaclePosition: [1000, 7000],
   speed: 14,
   damage: 300,
+};
+
+const stage4 = {
+  name: "STAGE4",
+  backgroundUrl: "./lib/backgrounds/game/mushrooms.jpeg",
+  groundUrl: "./lib/backgrounds/ground/mud.png",
+  length: 10000,
+  jumpObstacle: "obstacle mini_snack",
+  jumpObstaclePosition: [2000, 9000],
+  doubleJumpObstacle: "obstacle snacks",
+  doubleJumpObstaclePosition: [4000, 6000],
+  slideObstacle: "obstacle knife",
+  slideObstaclePosition: [1000, 7000],
+  speed: 16,
+  damage: 400,
 };

@@ -5,6 +5,9 @@ const rankGuideBox = document.querySelector(".rank_guide");
 const myPage = () => {
   document.querySelector(".my_page").style.display = document.querySelector(".my_page").style.display === "none" ? "block" : "none";
 };
+const notice = () => {
+  document.querySelector(".notice_page").style.display = document.querySelector(".notice_page").style.display === "none" ? "block" : "none";
+};
 
 const rankGuide = () => {
   rankGuideBox.style.display = rankGuideBox.style.display === "none" ? "block" : "none";
@@ -41,6 +44,7 @@ const init = () => {
 
   rankGuideBox.style.display = "none";
   document.querySelector(".my_page").style.display = "none";
+  document.querySelector(".notice_page").style.display = "none";
 
   if (highestScore >= 12600) {
     rank = "RAINBOW";

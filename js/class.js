@@ -112,22 +112,22 @@ class Stage {
         this.jumpObstaclePosition.indexOf(jellyPosition + 100) === -1 &&
         this.slideObstaclePosition.indexOf(jellyPosition + 100) === -1
       ) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.675, 100);
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.675, "");
       } else if (this.doubleJumpObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.225, 100);
-        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.225, 100);
-        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.225, 100);
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.225, "big_bear");
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.225, "big_bear");
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.225, "big_bear");
         i += 2;
       } else if (this.jumpObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.475, 100);
-        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.475, 100);
-        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.475, 100);
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.475, "yellow_bear");
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.475, "pink_bear");
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.475, "blue_bear");
         i += 2;
       } else if (this.slideObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.775, 100);
-        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.775, 100);
-        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.775, 100);
-        allJellyComProp.arr[i + 3] = new Jelly(jellyPosition + 300, gameProp.screenHeight * 0.775, 100);
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.775, "yellow_bear");
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.775, "yellow_bear");
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.775, "yellow_bear");
+        allJellyComProp.arr[i + 3] = new Jelly(jellyPosition + 300, gameProp.screenHeight * 0.775, "yellow_bear");
         i += 3;
       }
     }
@@ -283,13 +283,13 @@ class Cookie {
 }
 
 class Jelly {
-  constructor(x, y, score) {
+  constructor(x, y, type) {
     this.parentNode = document.querySelector(".game");
     this.el = document.createElement("div");
-    this.el.className = "jelly";
+    this.el.className = `jelly ${type}`;
     this.x = x;
     this.y = y;
-    this.score = score;
+    this.score = type === "" ? 100 : type === "yellow_bear" ? 200 : type === "pink_bear" ? 300 : type === "blue_bear" ? 500 : type === "big_bear" ? 1000 : 0;
 
     this.init();
   }
@@ -362,9 +362,12 @@ class Obstacle {
       cookie.crashed = true;
       cookie.minusHp(this.damage * -1);
       document.querySelector(".cookie").classList.add("crashed");
+      document.querySelector(".crash_filter").style.display = "block";
 
       setTimeout(() => {
         document.querySelector(".cookie").classList.remove("crashed");
+        document.querySelector(".crash_filter").style.display = "none";
+
         cookie.crashed = false;
       }, 1000);
     }
