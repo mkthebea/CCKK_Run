@@ -55,19 +55,19 @@ const init = () => {
   document.querySelector(".my_page").style.display = "none";
   document.querySelector(".notice_page").style.display = "none";
 
-  if (highestScore >= 12600) {
+  if (highestScore >= 65500) {
     rank = "RAINBOW";
     rankImgUrl = "url('./lib/ranks/Rainbow.png')";
-  } else if (highestScore >= 10500) {
+  } else if (highestScore >= 55500) {
     rank = "DIAMOND";
     rankImgUrl = "url('./lib/ranks/Diamond.png')";
-  } else if (highestScore >= 8400) {
+  } else if (highestScore >= 45000) {
     rank = "RUBY";
     rankImgUrl = "url('./lib/ranks/Ruby.png')";
-  } else if (highestScore >= 6300) {
+  } else if (highestScore >= 30000) {
     rank = "GOLD";
     rankImgUrl = "url('./lib/ranks/Gold.png')";
-  } else if (highestScore >= 4200) {
+  } else if (highestScore >= 15000) {
     rank = "SILVER";
     rankImgUrl = "url('./lib/ranks/Silver.png')";
   } else if (highestScore > 0) {
