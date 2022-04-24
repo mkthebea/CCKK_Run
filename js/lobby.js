@@ -17,7 +17,7 @@ const reset = () => {
   doReset = confirm("모든 데이터가 지워집니다. 리셋 하시겠어요?");
   if (doReset) {
     localStorage.clear();
-    console.log(localStorage);
+    // console.log(localStorage);
     location.reload();
   } else {
     return;

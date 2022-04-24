@@ -47,7 +47,6 @@ class Stage {
         gameBackground.gameBox.style.transform = `translateX(${0}px)`;
 
         allJellyComProp.arr.forEach((j) => {
-          console.log(j);
           j.el.remove();
         });
         allJellyComProp.arr.splice(0);
@@ -66,7 +65,6 @@ class Stage {
         gameBackground.gameBox.style.transform = `translateX(${0}px)`;
 
         allJellyComProp.arr.forEach((j) => {
-          console.log(j);
           j.el.remove();
         });
         allJellyComProp.arr.splice(0);
@@ -188,7 +186,6 @@ class Cookie {
 
         //점프 타임 만료 시 내려오기
         if (this.jumpTimer >= this.jumpTime) {
-          console.log(this.movey);
           // debugger;
           this.el.classList.remove("double");
           this.el.classList.add("down");
@@ -280,7 +277,6 @@ class Jelly {
       ) {
         this.el.remove();
         this.setScore();
-        // console.log(this.position(), cookie.position());
       }
     }
   }
