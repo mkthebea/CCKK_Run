@@ -102,37 +102,37 @@ const windowEvent = () => {
   });
 };
 
-const loadImg = () => {
-  //이미지 미리 로드
-  const preLoadImgSrc = [
-    "../lib/images/gingerMK_run.png",
-    "../lib/images/gingerMK_slide.png",
-    "../lib/images/gingerMK_jump_one.png",
-    "../lib/images/gingerMK_jump_double.png",
-    "../lib/images/gingerMK_jump_down.png",
-    "../lib/images/gingerMK_crashed3.png",
-    "../lib/images/gingerMK_dead.png",
-    "../lib/jelly/blue_jelly_bean.png",
-    "../lib/jelly/yellow_bear_jelly.png",
-    "../lib/jelly/pink_bear_jelly.png",
-    "../lib/jelly/blue_bear_jelly.png",
-    "../lib/jelly/big_bear_jelly.png",
-    "../lib/obstacles/clock.png",
-    "../lib/obstacles/pink_crystal.png",
-    "../lib/obstacles/snacks.png",
-    "../lib/obstacles/cake1.png",
-    "../lib/obstacles/table.png",
-    "../lib/obstacles/green_crystal.png",
-    "../lib/obstacles/mini_snack.png",
-    "../lib/obstacles/lamp.png",
-    "../lib/obstacles/long_crystal.png",
-    "../lib/obstacles/knife.png",
-  ];
-  preLoadImgSrc.forEach((arr) => {
-    const img = new Image();
-    img.src = arr;
-  });
-};
+// const loadImg = () => {
+//   //이미지 미리 로드
+//   const preLoadImgSrc = [
+//     "../lib/images/gingerMK_run.png",
+//     "../lib/images/gingerMK_slide.png",
+//     "../lib/images/gingerMK_jump_one.png",
+//     "../lib/images/gingerMK_jump_double.png",
+//     "../lib/images/gingerMK_jump_down.png",
+//     "../lib/images/gingerMK_crashed3.png",
+//     "../lib/images/gingerMK_dead.png",
+//     "../lib/jelly/blue_jelly_bean.png",
+//     "../lib/jelly/yellow_bear_jelly.png",
+//     "../lib/jelly/pink_bear_jelly.png",
+//     "../lib/jelly/blue_bear_jelly.png",
+//     "../lib/jelly/big_bear_jelly.png",
+//     "../lib/obstacles/clock.png",
+//     "../lib/obstacles/pink_crystal.png",
+//     "../lib/obstacles/snacks.png",
+//     "../lib/obstacles/cake1.png",
+//     "../lib/obstacles/table.png",
+//     "../lib/obstacles/green_crystal.png",
+//     "../lib/obstacles/mini_snack.png",
+//     "../lib/obstacles/lamp.png",
+//     "../lib/obstacles/long_crystal.png",
+//     "../lib/obstacles/knife.png",
+//   ];
+//   preLoadImgSrc.forEach((arr) => {
+//     const img = new Image();
+//     img.src = arr;
+//   });
+// };
 
 let cookie;
 
@@ -143,7 +143,7 @@ const init = () => {
   newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
   stageInfo.currentStage = newStage;
 
-  loadImg();
+  // loadImg();
   windowEvent();
   renderGame();
 };
