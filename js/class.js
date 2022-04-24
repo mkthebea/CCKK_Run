@@ -131,12 +131,6 @@ class Stage {
         i += 3;
       }
     }
-    // for (let i = 0; i <= 10; i++) {
-    //   allJellyComProp.arr[i] = new Jelly(500 + i * 100, gameProp.screenHeight * 0.6, 100);
-    // }
-    // for (let i = 0; i <= 10; i++) {
-    //   allObstacleComProp.arr[i] = new Obstacle(1500 + i * 1500, gameProp.screenHeight * 0.9 - 247, this.damage);
-    // }
   }
   stageGuide(text) {
     this.parentNode = document.querySelector(".game_app");
@@ -225,35 +219,6 @@ class Cookie {
       }
     }
   }
-  // jump() {
-  //   if (this.jumpState) {
-  //     this.movey -= this.jumpSpeed;
-  //     this.jumpTimer++;
-  //   } else {
-  //     if (this.movey < this.jumpMaxHeight) {
-  //       this.movey += this.jumpSpeed;
-  //     }
-  //   }
-  //   if (this.jumpTimer > 40) {
-  //     this.jumpState = false;
-  //     this.jumpTimer = 0;
-  //   }
-
-  //   // while (this.jumpState) {
-  //   //   do {
-  //   //     this.movey -= this.jumpSpeed;
-  //   //   } while (this.movey > this.jumpMaxHeight);
-  //   //   if (this.movey <= this.jumpMaxHeight) {
-  //   //     while (this.movey < 0) {
-  //   //       this.movey += this.jumpSpeed;
-  //   //     }
-  //   //   }
-  //   //   if (this.movey === 0) {
-  //   //     this.jumpState = false;
-  //   //     this.el.classList.remove("jump");
-  //   //   }
-  //   // }
-  // }
   minusHp(hp) {
     const hpBox = document.querySelector(".game_info .hp .hp_background .hp_progress");
     this.hpValue += hp;
