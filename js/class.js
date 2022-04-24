@@ -94,10 +94,10 @@ class Stage {
   }
   callMap() {
     this.jumpObstaclePosition.forEach((o) => {
-      allObstacleComProp.arr.push(new Obstacle(o, gameProp.screenHeight * 0.75, this.damage, this.jumpObstacle));
+      allObstacleComProp.arr.push(new Obstacle(o, 565.5, this.damage, this.jumpObstacle));
     });
     this.doubleJumpObstaclePosition.forEach((o) => {
-      allObstacleComProp.arr.push(new Obstacle(o, gameProp.screenHeight * 0.5, this.damage, this.doubleJumpObstacle));
+      allObstacleComProp.arr.push(new Obstacle(o, 377, this.damage, this.doubleJumpObstacle));
     });
     this.slideObstaclePosition.forEach((o) => {
       allObstacleComProp.arr.push(new Obstacle(o, 0, this.damage, this.slideObstacle));
@@ -110,22 +110,22 @@ class Stage {
         this.jumpObstaclePosition.indexOf(jellyPosition + 100) === -1 &&
         this.slideObstaclePosition.indexOf(jellyPosition + 100) === -1
       ) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.675, "");
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, 500, "");
       } else if (this.doubleJumpObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.225, "big_bear");
-        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.225, "big_bear");
-        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.225, "big_bear");
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, 169.65, "big_bear");
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, 169.65, "big_bear");
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, 169.65, "big_bear");
         i += 2;
       } else if (this.jumpObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.475, "yellow_bear");
-        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.475, "pink_bear");
-        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.475, "blue_bear");
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, 358.15, "yellow_bear");
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, 358.15, "pink_bear");
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, 358.15, "blue_bear");
         i += 2;
       } else if (this.slideObstaclePosition.indexOf(jellyPosition + 100) !== -1) {
-        allJellyComProp.arr[i] = new Jelly(jellyPosition, gameProp.screenHeight * 0.775, "yellow_bear");
-        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, gameProp.screenHeight * 0.775, "yellow_bear");
-        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, gameProp.screenHeight * 0.775, "yellow_bear");
-        allJellyComProp.arr[i + 3] = new Jelly(jellyPosition + 300, gameProp.screenHeight * 0.775, "yellow_bear");
+        allJellyComProp.arr[i] = new Jelly(jellyPosition, 584.35, "yellow_bear");
+        allJellyComProp.arr[i + 1] = new Jelly(jellyPosition + 100, 584.35, "yellow_bear");
+        allJellyComProp.arr[i + 2] = new Jelly(jellyPosition + 200, 584.35, "yellow_bear");
+        allJellyComProp.arr[i + 3] = new Jelly(jellyPosition + 300, 584.35, "yellow_bear");
         i += 3;
       }
     }
@@ -166,8 +166,8 @@ class Cookie {
     return {
       left: this.el.getBoundingClientRect().left,
       right: this.el.getBoundingClientRect().right,
-      top: gameProp.screenHeight - this.el.getBoundingClientRect().top,
-      bottom: gameProp.screenHeight - this.el.getBoundingClientRect().top - this.el.getBoundingClientRect().height,
+      top: 754 - this.el.getBoundingClientRect().top,
+      bottom: 754 - this.el.getBoundingClientRect().top - this.el.getBoundingClientRect().height,
     };
   }
   keyMotion() {
@@ -263,8 +263,8 @@ class Jelly {
     return {
       left: this.el.getBoundingClientRect().left,
       right: this.el.getBoundingClientRect().right,
-      top: gameProp.screenHeight - this.el.getBoundingClientRect().top,
-      bottom: gameProp.screenHeight - this.el.getBoundingClientRect().top - this.el.getBoundingClientRect().height,
+      top: 754 - this.el.getBoundingClientRect().top,
+      bottom: 754 - this.el.getBoundingClientRect().top - this.el.getBoundingClientRect().height,
     };
   }
   crashJelly() {
@@ -308,8 +308,8 @@ class Obstacle {
     return {
       left: this.el.getBoundingClientRect().left,
       right: this.el.getBoundingClientRect().right,
-      top: gameProp.screenHeight - this.el.getBoundingClientRect().top,
-      bottom: gameProp.screenHeight - this.el.getBoundingClientRect().top - this.el.getBoundingClientRect().height,
+      top: 754 - this.el.getBoundingClientRect().top,
+      bottom: 754 - this.el.getBoundingClientRect().top - this.el.getBoundingClientRect().height,
     };
   }
   crashObstacle() {

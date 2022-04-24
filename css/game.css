@@ -19,7 +19,10 @@ body {
   overflow: hidden;
   position: relative;
   min-width: 1280px;
-  height: 100vh;
+  height: 754px;
+  margin-top: calc(50vh - 377px);
+  margin-bottom: calc(50vh - 377px);
+  /* background-color: black; */
 }
 .game_app .game {
   position: absolute;
@@ -71,7 +74,7 @@ body {
   text-align: center;
   position: fixed;
   left: 0;
-  top: 0;
+  top: calc(50vh - 377px);;
   z-index: 20;
   width: 100%;
   height: 100px;
@@ -180,10 +183,10 @@ body {
 
 @keyframes cookie_run{
     0% {
-      background-position-x: 0vh;
+      background-position-x: 0px;
     }
     100% {
-      background-position-x: -196vh;
+      background-position-x: -1477px;
     }
   }
 @keyframes cookie_slide{
@@ -207,10 +210,10 @@ body {
   }
   @keyframes cookie_jump_double {
     0% {
-      background-position-x: 0vh;
+      background-position-x: 0px;
     }
     100% {
-      background-position-x: -308vh;
+      background-position-x: -2321px;
     }
   }
   @keyframes blink_effect {
@@ -223,8 +226,8 @@ body {
   position: fixed;
   left: 0;
   bottom: 10%;
-  width: 28vh;
-  height: 30vh;
+  width: 211px;
+  height: 226.2px;
   will-change: transform;
   z-index: 20;
   /* background-color: red; */
@@ -242,25 +245,25 @@ body {
 .cookie_box .cookie.run {
   height: 100%;
   background-image: url("../lib/images/gingerMK_run.png");
-  background-size: 196vh 30vh;
+  background-size: 1477px 226.2px;
   animation: cookie_run .4s infinite steps(7);
 }
 .cookie_box .cookie.slide {
   position: relative;
-  width: 15vh;
-  height: 40vh;
+  width: 113.1px;
+  height: 301.6px;
   background-image: url("../lib/images/gingerMK_slide.png");
-  background-size: 15vh 40vh;
+  background-size: 113.1px 301.6px;
   animation: none;
   transform: rotate(270deg);
-  bottom: -3vh;
+  bottom: -22.6px;
   /* left: 110px; */
   /* animation: cookie_slide .2s infinite steps(2); */
 }
 .cookie_box .cookie.jump {
   height: 100%;
   background-image: url("../lib/images/gingerMK_jump_one.png");
-  background-size: 28vh 30vh;
+  background-size: 211px 226.2px;
   animation: none;
   /* animation: cookie_slide .5s infinite steps(2); */
 }
@@ -268,7 +271,7 @@ body {
   height: 100%;
   width: 100%;
   background-image: url("../lib/images/gingerMK_jump_double.png");
-  background-size: 308vh 30vh;
+  background-size: 2321px 226.2px;
   animation: cookie_jump_double .5s infinite steps(11);
 }
 .cookie_box .cookie.jump.down,  .cookie_box .cookie.jump.down.slide{
@@ -277,23 +280,23 @@ body {
   height: 100%;
   width: 100%;
   background-image: url("../lib/images/gingerMK_jump_down.png");
-  background-size: 28vh 30vh;
+  background-size: 211px 226.2px;
   transform: none;
 }
 .cookie_box .cookie.crashed {
-  width: 28vh;
-  height: 30vh;
+  width: 211px;
+  height: 226.2px;
   bottom: 0%;
   width: 100%;
   height: 100%;
   transform: none;
   background-image: url("../lib/images/gingerMK_crashed3.png") !important;
-  background-size: 28vh 30vh;
+  background-size: 211px 226.2px;
   animation: blink_effect .1s infinite;
 }
 .cookie_box .cookie.dead {
   background-image: url("../lib/images/gingerMK_dead.png") !important;
-  background-size: 28vh 30vh;
+  background-size: 211px 226.2px;
   width: 100%;
   height: 100%;
   animation: none !important;
@@ -302,43 +305,43 @@ body {
 
 .jelly {
   position: absolute;
-  width: 6vh;
-  height: 7.5vh;
+  width: 45.2px;
+  height: 56.5px;
   background-image: url("../lib/jelly/blue_jelly_bean.png");
-  background-size: 6vh 7.5vh;
+  background-size: 45.2px 56.5px;
   z-index: 10;
   /* background-color: blue; */
 }
 .jelly.yellow_bear {
   position: absolute;
-  width: 7.5vh;
-  height: 7.5vh;
+  width: 56.5px;
+  height: 56.5px;
   background-image: url("../lib/jelly/yellow_bear_jelly.png");
-  background-size: 7.5vh 7.5vh;
+  background-size: 56.5px 56.5px;
   z-index: 10;
 }
 .jelly.pink_bear {
   position: absolute;
-  width: 7.5vh;
-  height: 7.5vh;
+  width: 56.5px;
+  height: 56.5px;
   background-image: url("../lib/jelly/pink_bear_jelly.png");
-  background-size: 7.5vh 7.5vh;
+  background-size: 56.5px 56.5px;
   z-index: 10;
 }
 .jelly.blue_bear {
   position: absolute;
-  width: 7.5vh;
-  height: 7.5vh;
+  width: 56.5px;
+  height: 56.5px;
   background-image: url("../lib/jelly/blue_bear_jelly.png");
-  background-size: 7.5vh 7.5vh;
+  background-size: 56.5px 56.5px;
   z-index: 10;
 }
 .jelly.big_bear {
   position: absolute;
-  width: 20vh;
-  height: 20vh;
+  width: 150px;
+  height: 150px;
   background-image: url("../lib/jelly/big_bear_jelly.png");
-  background-size: 20vh 20vh;
+  background-size: 150px 150px;
   z-index: 10;
 }
 
@@ -391,37 +394,37 @@ body {
 
 @keyframes snacks {
   0% {
-    background-position-x: 0vh;
+    background-position-x: 0px;
   }
   99% {
-    background-position-x: -75vh;
+    background-position-x: -565px;
   }
   100% {
-    background-position-x: -60vh;
+    background-position-x: -452px;
   }
 }
 @keyframes clocks {
   0% {
-    background-position-x: 0vh;
+    background-position-x: 0px;
   }
   100% {
-    background-position-x: -60vh;
+    background-position-x: -452px;
   }
 }
 @keyframes table {
   0% {
-    background-position-x: 0vh;
+    background-position-x: 0px;
   }
   100% {
-    background-position-x: -75vh;
+    background-position-x: -565px;
   }
 }
 @keyframes long_crystal {
   0% {
-    background-position-x: 0vh;
+    background-position-x: 0px;
   }
   100% {
-    background-position-x: -60vh;
+    background-position-x: -452.4px;
   }
 }
 
@@ -438,84 +441,84 @@ body {
 .obstacle.clocks {
   /* 2단 */
   position: absolute;
-  width: 15vh;
-  height: 40vh;
+  width: 113px;
+  height: 301px;
   background-image: url("../lib/obstacles/clock.png");
-  background-size: 60vh 40vh;
+  background-size: 452px 301px;
   animation: clocks 1s infinite steps(4); 
 }
 .obstacle.pink_crystal {
   /* 2단 */
   position: absolute;
-  width: 15vh;
-  height: 40vh;
+  width: 113px;
+  height: 301px;
   background-image: url("../lib/obstacles/pink_crystal.png");
-  background-size: 15vh 40vh;
+  background-size: 113px 301px;
 }
 .obstacle.snacks {
   /* 2단 */
   position: absolute;
-  width: 15vh;
-  height: 40vh;
+  width: 113px;
+  height: 301px;
   background-image: url("../lib/obstacles/snacks.png");
-  background-size: 75vh 40vh;
+  background-size: 565.5px 301px;
   animation: snacks 1s forwards steps(5); 
 }
 .obstacle.cake {
   /* 2단 */
   position: absolute;
-  width: 15vh;
-  height: 40vh;
+  width: 113px;
+  height: 301px;
   background-image: url("../lib/obstacles/cake1.png");
-  background-size: 15vh 40vh;
+  background-size: 113px 301px;
 }
 .obstacle.table {
   /* 1단 */
   position: absolute;
-  width: 15vh;
-  height: 15vh;
+  width: 113px;
+  height: 113px;
   background-image: url("../lib/obstacles/table.png");
-  background-size: 75vh 15vh;
+  background-size: 565px 113px;
   animation: table 1s infinite steps(5); 
 }
 .obstacle.green_crystal {
   /* 1단 */
   position: absolute;
-  width: 15vh;
-  height: 15vh;
+  width: 113px;
+  height: 113px;
   background-image: url("../lib/obstacles/green_crystal.png");
-  background-size: 15vh 15vh;
+  background-size: 113px 113px;
 }
 .obstacle.mini_snack {
   /* 1단 */
   position: absolute;
-  width: 15vh;
-  height: 15vh;
+  width: 113px;
+  height: 113px;
   background-image: url("../lib/obstacles/mini_snack.png");
-  background-size: 15vh 15vh;
+  background-size: 113px 113px;
 }
 .obstacle.lamp {
   /* 슬라이드 */
   position: absolute;
-  width: 30vh;
-  height: 70vh;
+  width: 226.2px;
+  height: 572.8px;
   background-image: url('../lib/obstacles/lamp.png');
-  background-size: 30vh 70vh;
+  background-size: 226.2px 572.8px;
 }
 .obstacle.long_crystal {
   /* 슬라이드 */
   position: absolute;
-  width: 30vh;
-  height: 70vh;
+  width: 226.2px;
+  height: 572.8px;
   background-image: url('../lib/obstacles/long_crystal.png');
-  background-size: 60vh 70vh;
+  background-size: 452.4px 572.8px;
   animation: long_crystal 1s infinite steps(2);
 }
 .obstacle.knife {
   /* 슬라이드 */
   position: absolute;
-  width: 30vh;
-  height: 70vh;
+  width: 226.2px;
+  height: 572.8px;
   background-image: url('../lib/obstacles/knife.png');
-  background-size: 30vh 70vh;
+  background-size: 226.2px 572.8px;
 }
