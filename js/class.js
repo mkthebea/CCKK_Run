@@ -361,7 +361,10 @@ class Obstacle {
       this.isCrashed = true;
       cookie.crashed = true;
       cookie.minusHp(this.damage * -1);
-      document.querySelector(".cookie").classList.add("crashed");
+      // document.querySelector(".cookie").classList.add("crashed");
+      if (!document.querySelector(".cookie").classList.contains("dead")) {
+        document.querySelector(".cookie").classList.add("crashed");
+      }
       document.querySelector(".crash_filter").style.display = "block";
 
       setTimeout(() => {
