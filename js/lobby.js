@@ -33,6 +33,15 @@ const windowEvent = () => {
   });
 };
 
+const loadImg = () => {
+  //이미지 미리 로드
+  const preLoadImgSrc = ["../lib/lobby/The Witch's Kitchen.png", "../lib/images/gingerMK_profile.png", "../lib/lobby/notice.png", "../lib/ranks/No_rank.png", "../lib/ranks/rank_Guide.PNG"];
+  preLoadImgSrc.forEach((arr) => {
+    const img = new Image();
+    img.src = arr;
+  });
+};
+
 const init = () => {
   const highestScoreBox = document.querySelector(".highest_score_text");
   const highestScore = localStorage.getItem("highestScore") ? localStorage.getItem("highestScore") : "기록 없음";
@@ -76,6 +85,7 @@ const init = () => {
     localStorage.setItem("currentStageIndex", 0);
   }
 
+  loadImg();
   windowEvent();
 };
 
