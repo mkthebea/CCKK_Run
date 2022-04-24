@@ -104,6 +104,15 @@ const windowEvent = () => {
   });
 };
 
+const loadImg = () => {
+  //이미지 미리 로드
+  const preLoadImgSrc = ["../lib/images/gingerMK_jump_double.png", "../lib/images/gingerMK_crashed3.png"];
+  preLoadImgSrc.forEach((arr) => {
+    const img = new Image();
+    img.src = arr;
+  });
+};
+
 let cookie;
 
 const init = () => {

@@ -266,6 +266,7 @@ body {
 }
 .cookie_box .cookie.jump.double {
   height: 100%;
+  width: 100%;
   background-image: url("../lib/images/gingerMK_jump_double.png");
   background-size: 308vh 30vh;
   animation: cookie_jump_double .5s infinite steps(11);
@@ -288,7 +289,7 @@ body {
   transform: none;
   background-image: url("../lib/images/gingerMK_crashed3.png") !important;
   background-size: 28vh 30vh;
-  animation: blink_effect .1s infinite;
+  animation: blink_effect .1s infinite !important;
 }
 .cookie_box .cookie.dead {
   background-image: url('../lib/images/gingerMK_dead.png') !important;
