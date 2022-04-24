@@ -249,7 +249,7 @@ body {
   position: relative;
   width: 15vh;
   height: 40vh;
-  background-image: url("../lib/images/gingerMK_slide.PNG");
+  background-image: url("../lib/images/gingerMK_slide.png");
   background-size: 15vh 40vh;
   animation: none;
   transform: rotate(270deg);
