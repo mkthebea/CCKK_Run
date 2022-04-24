@@ -15,7 +15,7 @@ const stage1 = {
 
 const stage2 = {
   name: "STAGE2",
-  backgroundUrl: "./lib/backgrounds/game/purple_mud_double.jpeg",
+  backgroundUrl: "./lib/backgrounds/game/purple_mud.jpeg",
   groundUrl: "./lib/backgrounds/ground/pink_crystal.png",
   length: 10000,
   jumpObstacle: "obstacle green_crystal",
