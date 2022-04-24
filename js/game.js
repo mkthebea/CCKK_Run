@@ -89,12 +89,10 @@ const windowEvent = () => {
   window.addEventListener("keydown", (e) => {
     if (key.keyValue[e.which] === "jump" && !key.keyDown["slide"]) {
       cookie.jumpState = cookie.jumpState === 0 ? 1 : cookie.jumpState === 1 ? 2 : 3;
-      // console.log(document.querySelector(".cookie").classList);
 
       if (cookie.jumpState === 2) {
         cookie.jumpTimer = 0;
       }
-      // cookie.jumpCount++;
     }
     key.keyDown[key.keyValue[e.which]] = true;
   });
@@ -144,13 +142,6 @@ const init = () => {
   document.querySelector(".score_box").innerText = localStorage.getItem("score") ? localStorage.getItem("score") : 0;
   newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
   stageInfo.currentStage = newStage;
-  // console.log(stageInfo.currentStageIndex);
-
-  // newStage = new Stage(stage2);
-  // stageInfo.stage.push(newStage);
-  // console.log(stageInfo.stage);
-
-  // stageInfo.stage.callMap();
 
   loadImg();
   windowEvent();
