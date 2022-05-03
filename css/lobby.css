@@ -1,14 +1,14 @@
 @font-face {
   font-family: 'cookieRun Regular';
-  src: url('../CookieRunFont_OTF/CookieRun\ Regular.otf') format('truetype');
+  src: url('../CookieRunFont_OTF/CookieRun\ Regular.otf') format('opentype');
 }
 @font-face {
   font-family: 'cookieRun Black';
-  src: url('../CookieRunFont_OTF/CookieRun\ Black.otf.otf') format('truetype');
+  src: url('../CookieRunFont_OTF/CookieRun\ Black.otf.otf') format('opentype');
 }
 @font-face {
   font-family: 'cookieRun Bold';
-  src: url('../CookieRunFont_OTF/CookieRun\ Bold.otf') format('truetype');
+  src: url('../CookieRunFont_OTF/CookieRun\ Bold.otf') format('opentype');
 }
 
 body {
@@ -41,6 +41,24 @@ body {
     background-size: 264px 270px;
     height: 270px;
   }
+}
+.lobby .loading_box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 30;
+}
+.lobby .loading_box span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  font-size: 100px;
+  color: orange;
+  text-shadow: 3px 3px 3px #000;
 }
 .lobby .cookie_lobby {
   position: absolute;

@@ -36,37 +36,42 @@ const windowEvent = () => {
 const loadImg = () => {
   //이미지 미리 로드
   const preLoadImgSrc = [
-    "../lib/lobby/The Witch's Kitchen.png",
-    "../lib/images/gingerMK_profile.png",
-    "../lib/lobby/notice.png",
-    "../lib/ranks/No_rank.png",
-    "../lib/ranks/rank_Guide.PNG",
-    "../lib/images/gingerMK_run.png",
-    "../lib/images/gingerMK_slide.png",
-    "../lib/images/gingerMK_jump_one.png",
-    "../lib/images/gingerMK_jump_double.png",
-    "../lib/images/gingerMK_jump_down.png",
-    "../lib/images/gingerMK_crashed3.png",
-    "../lib/images/gingerMK_dead.png",
-    "../lib/jelly/blue_jelly_bean.png",
-    "../lib/jelly/yellow_bear_jelly.png",
-    "../lib/jelly/pink_bear_jelly.png",
-    "../lib/jelly/blue_bear_jelly.png",
-    "../lib/jelly/big_bear_jelly.png",
-    "../lib/obstacles/clock.png",
-    "../lib/obstacles/pink_crystal.png",
-    "../lib/obstacles/snacks.png",
-    "../lib/obstacles/cake1.png",
-    "../lib/obstacles/table.png",
-    "../lib/obstacles/green_crystal.png",
-    "../lib/obstacles/mini_snack.png",
-    "../lib/obstacles/lamp.png",
-    "../lib/obstacles/long_crystal.png",
-    "../lib/obstacles/knife.png",
+    "./lib/lobby/The Witch's Kitchen.png",
+    "./lib/images/gingerMK_profile.png",
+    "./lib/lobby/notice.png",
+    "./lib/ranks/No_rank.png",
+    "./lib/ranks/rank_Guide.PNG",
+    "./lib/images/gingerMK_run.png",
+    "./lib/images/gingerMK_slide.png",
+    "./lib/images/gingerMK_jump_one.png",
+    "./lib/images/gingerMK_jump_double.png",
+    "./lib/images/gingerMK_jump_down.png",
+    "./lib/images/gingerMK_crashed3.png",
+    "./lib/images/gingerMK_dead.png",
+    "./lib/jelly/blue_jelly_bean.png",
+    "./lib/jelly/yellow_bear_jelly.png",
+    "./lib/jelly/pink_bear_jelly.png",
+    "./lib/jelly/blue_bear_jelly.png",
+    "./lib/jelly/big_bear_jelly.png",
+    "./lib/obstacles/clock.png",
+    "./lib/obstacles/pink_crystal.png",
+    "./lib/obstacles/snacks.png",
+    "./lib/obstacles/cake1.png",
+    "./lib/obstacles/table.png",
+    "./lib/obstacles/green_crystal.png",
+    "./lib/obstacles/mini_snack.png",
+    "./lib/obstacles/lamp.png",
+    "./lib/obstacles/long_crystal.png",
+    "./lib/obstacles/knife.png",
   ];
   preLoadImgSrc.forEach((arr) => {
     const img = new Image();
     img.src = arr;
+    if (arr === preLoadImgSrc[preLoadImgSrc.length - 1]) {
+      img.onload = () => {
+        document.querySelector(".loading_box").style.display = "none";
+      };
+    }
   });
 };
 
