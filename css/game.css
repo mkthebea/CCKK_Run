@@ -291,8 +291,8 @@ body {
   height: 100%;
   transform: none;
   background-image: url("../lib/images/gingerMK_crashed3.png") !important;
-  background-size: 211px 226.2px;
-  animation: blink_effect .1s infinite;
+  background-size: 211px 226.2px !important;
+  animation: blink_effect .1s infinite !important;
 }
 .cookie_box .cookie.dead {
   background-image: url("../lib/images/gingerMK_dead.png") !important;
