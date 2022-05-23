@@ -18,6 +18,10 @@ const allObstacleComProp = {
   arr: [],
 };
 
+const allItemComProp = {
+  arr: [],
+};
+
 const stageInfo = {
   stage: [stage1, stage2, stage3, stage4],
   currentStage: {},
@@ -54,6 +58,7 @@ const pause = () => {
 const renderGame = () => {
   cookie.keyMotion();
   if (!gameProp.paused && !gameProp.gameOver && !gameProp.gameClear) {
+    cookie.minusHp(-0.5);
     cookie.movex = cookie.movex + cookie.speed;
     document.querySelector(".cookie_box").style.transform = `translate(${cookie.movex}px, ${cookie.movey}px)`;
     setGameBackground();
@@ -64,6 +69,9 @@ const renderGame = () => {
       if (!arr.isCrashed && !cookie.crashed) {
         arr.crashObstacle();
       }
+    });
+    allItemComProp.arr.forEach((arr) => {
+      arr.crashItemJelly();
     });
   } else if (gameProp.gameOver || gameProp.gameClear) {
     document.querySelector(".cookie_box").style.transform = `translate(${cookie.movex}px, 0px)`;

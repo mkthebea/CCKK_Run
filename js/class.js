@@ -12,6 +12,7 @@ class Stage {
     this.doubleJumpObstaclePosition = stage.doubleJumpObstaclePosition;
     this.slideObstacle = stage.slideObstacle;
     this.slideObstaclePosition = stage.slideObstaclePosition;
+    this.totalCoin = 0;
 
     this.init();
     this.stageStart();
@@ -20,6 +21,7 @@ class Stage {
     cookie.speed = this.speed;
     gameBackground.gameBox.style.backgroundImage = `url(${this.backgroundUrl})`;
     gameBackground.groundBox.style.backgroundImage = `url(${this.groundUrl})`;
+    document.querySelector(".coin_amount").innerText = this.totalCoin;
     this.callMap();
   }
   stageStart() {
@@ -93,6 +95,12 @@ class Stage {
     }, 1500);
   }
   callMap() {
+    allItemComProp.arr.push(new Item(500, 475, "coin_magic"));
+    allItemComProp.arr.push(new Item(2300, 475, "coin_magic"));
+    allItemComProp.arr.push(new Item(4300, 475, "coin_magic"));
+
+    // allItemComProp.arr.push(new Item(3000, 475, "giant"));
+
     this.jumpObstaclePosition.forEach((o) => {
       allObstacleComProp.arr.push(new Obstacle(o, 565.5, this.damage, this.jumpObstacle));
     });
@@ -159,6 +167,8 @@ class Cookie {
     this.hpValue = localStorage.getItem("hp") ? localStorage.getItem("hp") * 1 : this.defaultHpValue;
     this.hpProgress = 0;
     this.crashed = false;
+    this.superCookie = false;
+    this.eatenItem = 0;
 
     this.minusHp(0);
   }
@@ -251,7 +261,8 @@ class Jelly {
     this.el.className = `jelly ${type}`;
     this.x = x;
     this.y = y;
-    this.score = type === "" ? 100 : type === "yellow_bear" ? 200 : type === "pink_bear" ? 300 : type === "blue_bear" ? 500 : type === "big_bear" ? 1000 : 0;
+    this.type = type;
+    this.score = this.type === "coin" ? 10 : type === "yellow_bear" ? 200 : type === "pink_bear" ? 300 : type === "blue_bear" ? 500 : type === "big_bear" ? 1000 : 0;
 
     this.init();
   }
@@ -284,6 +295,10 @@ class Jelly {
     if (!gameProp.paused) {
       stageInfo.totalScore += this.score;
       document.querySelector(".score_box").innerText = stageInfo.totalScore;
+      if (this.type === "coin") {
+        stageInfo.currentStage.totalCoin += 1;
+        document.querySelector(".coin_amount").innerText = stageInfo.currentStage.totalCoin;
+      }
     }
   }
 }
@@ -313,27 +328,148 @@ class Obstacle {
     };
   }
   crashObstacle() {
-    if (
-      this.position().right - 10 > cookie.position().left &&
-      this.position().left + 10 < cookie.position().right &&
-      this.position().top - 10 > cookie.position().bottom &&
-      this.position().bottom + 10 < cookie.position().top
-    ) {
-      this.isCrashed = true;
-      cookie.crashed = true;
-      cookie.minusHp(this.damage * -1);
-      // document.querySelector(".cookie").classList.add("crashed");
-      if (!document.querySelector(".cookie").classList.contains("dead")) {
-        document.querySelector(".cookie").classList.add("crashed");
+    if (!cookie.superCookie) {
+      if (
+        this.position().right - 10 > cookie.position().left &&
+        this.position().left + 10 < cookie.position().right &&
+        this.position().top - 10 > cookie.position().bottom &&
+        this.position().bottom + 10 < cookie.position().top
+      ) {
+        this.isCrashed = true;
+        cookie.crashed = true;
+        cookie.minusHp(this.damage * -1);
+        // document.querySelector(".cookie").classList.add("crashed");
+        if (!document.querySelector(".cookie").classList.contains("dead")) {
+          document.querySelector(".cookie").classList.add("crashed");
+        }
+        document.querySelector(".crash_filter").style.display = "block";
+
+        setTimeout(() => {
+          document.querySelector(".cookie").classList.remove("crashed");
+          document.querySelector(".crash_filter").style.display = "none";
+
+          cookie.crashed = false;
+        }, 1000);
       }
-      document.querySelector(".crash_filter").style.display = "block";
-
-      setTimeout(() => {
-        document.querySelector(".cookie").classList.remove("crashed");
-        document.querySelector(".crash_filter").style.display = "none";
-
-        cookie.crashed = false;
-      }, 1000);
+    } else {
+      if (
+        this.position().right - 10 > cookie.position().left &&
+        this.position().left + 10 < cookie.position().right &&
+        this.position().top - 10 > cookie.position().bottom &&
+        this.position().bottom + 10 < cookie.position().top
+      ) {
+        this.el.style.opacity = "0.5"; //장파 모션 추가
+      }
     }
   }
+  coinMagicObstacle() {
+    // console.log("obstacle: ", this.position());
+    for (let i = 0; i < (this.position().top - this.position().bottom) / 50; i++) {
+      for (let j = 0; j < (this.position().right - this.position().left) / 50; j++) {
+        allJellyComProp.arr.push(new Jelly(this.x + j * 50, this.y + i * 50 - 35, "coin"));
+        // console.log("coin: ", this.position().left + j * 50, this.position().bottom + i * 50);
+        // console.log("real: ", Jelly.position());
+      }
+    }
+    this.el.remove();
+  }
+}
+
+class Item {
+  constructor(x, y, type) {
+    this.parentNode = document.querySelector(".game");
+    this.el = document.createElement("div");
+    this.el.className = `item ${type}`;
+    this.x = x;
+    this.y = y;
+    this.type = type;
+
+    this.init();
+  }
+  init() {
+    this.el.style.transform = `translate(${this.x}px, ${this.y}px)`;
+    this.parentNode.appendChild(this.el);
+  }
+  position() {
+    return {
+      left: this.el.getBoundingClientRect().left,
+      right: this.el.getBoundingClientRect().right,
+      top: 754 - this.el.getBoundingClientRect().top,
+      bottom: 754 - this.el.getBoundingClientRect().top - this.el.getBoundingClientRect().height,
+    };
+  }
+  crashItemJelly() {
+    if (!gameProp.paused) {
+      if (
+        this.position().right > cookie.position().left &&
+        this.position().left < cookie.position().right &&
+        this.position().top > cookie.position().bottom &&
+        this.position().bottom < cookie.position().top
+      ) {
+        this.el.remove();
+        if (this.type === "blast") {
+          cookie.eatenItem++;
+          this.blast();
+        } else if (this.type === "giant") {
+          cookie.eatenItem++;
+          this.giant();
+        } else if (this.type === "coin_magic") {
+          this.coinMagic();
+        } else if (this.type === "magnet") {
+          this.magnet();
+        }
+      }
+    }
+  }
+  blast() {
+    document.querySelector(".cookie").classList.add("blast");
+    cookie.speed *= 2;
+    cookie.superCookie = true;
+
+    setTimeout(() => {
+      document.querySelector(".cookie").classList.remove("blast");
+      if (!document.querySelector(".cookie").classList.contains("giant")) {
+        document.querySelector(".cookie").classList.add("supper");
+      }
+      cookie.speed /= 2;
+    }, 2000);
+    setTimeout(() => {
+      cookie.eatenItem--;
+      console.log("blast에서 eatenItem--");
+      if (cookie.eatenItem === 0) {
+        document.querySelector(".cookie").classList.remove("supper");
+        cookie.superCookie = false;
+      }
+    }, 3500);
+  }
+  giant() {
+    document.querySelector(".cookie").classList.add("giant");
+    cookie.superCookie = true;
+
+    setTimeout(() => {
+      document.querySelector(".cookie").classList.remove("giant");
+      if (!document.querySelector(".cookie").classList.contains("blast")) {
+        document.querySelector(".cookie").classList.add("supper");
+      }
+    }, 2000);
+    setTimeout(() => {
+      cookie.eatenItem--;
+      console.log("giant에서 eatenItem--");
+      if (cookie.eatenItem === 0) {
+        document.querySelector(".cookie").classList.remove("supper");
+        cookie.superCookie = false;
+      }
+    }, 3500);
+  }
+  coinMagic() {
+    allObstacleComProp.arr.forEach((arr) => {
+      // if (arr.position().left > cookie.movex - gameProp.screenWidth / 5 && arr.position().right < cookie.movex + (gameProp.screenWidth / 5) * 4) {
+      //   arr.coinMagicObstacle();
+      // }
+      if (arr.x < cookie.movex + (gameProp.screenWidth / 5) * 4 && arr.x > cookie.movex - gameProp.screenWidth / 5) {
+        arr.coinMagicObstacle();
+      }
+    });
+  }
+  magnet() {}
 }

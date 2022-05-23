@@ -74,7 +74,7 @@ body {
   text-align: center;
   position: fixed;
   left: 0;
-  top: calc(50vh - 377px);;
+  top: calc(50vh - 377px);
   z-index: 20;
   width: 100%;
   height: 100px;
@@ -180,6 +180,29 @@ body {
   /* text-shadow: 1px 1px 1px #000; */
 }
 
+.coin_box {
+  width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  top: 180px;
+  left: 2%;
+  height: 40px;
+  align-items: center;
+}
+.coin_box img {
+  width: 40px;
+  height: 40px;
+}
+.coin_box .coin_amount {
+  font-size: 30px;
+  line-height: 40px;
+  color: white;
+  font-family: 'cookieRun Regular';
+
+}
 
 @keyframes cookie_run{
     0% {
@@ -189,7 +212,16 @@ body {
       background-position-x: -1477px;
     }
   }
-@keyframes cookie_slide{
+@keyframes cookie_run_giant {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -2215.5px;
+  }
+}
+
+/* @keyframes cookie_slide {
     0% {
       background-position-x: 0px;
     }
@@ -197,30 +229,60 @@ body {
       background-position-x: -606px;
     }
   }
-  @keyframes cookie_jump {
-    0%{
-      transform: translateY(0px);
-    }
-    50%{
-      transform: translateY(-250px);
-    }
-    100% {
-      transform: translateY(0px);
-    }
+@keyframes cookie_slide_giant {
+  0% {
+    background-position-x: 0px;
   }
-  @keyframes cookie_jump_double {
-    0% {
-      background-position-x: 0px;
-    }
-    100% {
-      background-position-x: -2321px;
-    }
+  100% {
+    background-position-x: -909px;
   }
-  @keyframes blink_effect {
-    50% {
-      opacity: 0;
-    }
+} */
+
+/* @keyframes cookie_jump {
+  0%{
+    transform: translateY(0px);
   }
+  50%{
+    transform: translateY(-250px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes cookie_jump_giant {
+  0%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(-375px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+} */
+
+@keyframes cookie_jump_double {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -2321px;
+  }
+}
+@keyframes cookie_jump_double_giant {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -3481.5px;
+  }
+}
+
+@keyframes blink_effect {
+  50% {
+    opacity: 0;
+  }
+}
 
 .cookie_box {
   position: fixed;
@@ -257,15 +319,12 @@ body {
   animation: none;
   transform: rotate(270deg);
   bottom: -22.6px;
-  /* left: 110px; */
-  /* animation: cookie_slide .2s infinite steps(2); */
 }
 .cookie_box .cookie.jump {
   height: 100%;
   background-image: url("../lib/images/gingerMK_jump_one.png");
   background-size: 211px 226.2px;
   animation: none;
-  /* animation: cookie_slide .5s infinite steps(2); */
 }
 .cookie_box .cookie.jump.double {
   height: 100%;
@@ -294,6 +353,44 @@ body {
   background-size: 211px 226.2px !important;
   animation: blink_effect .1s infinite !important;
 }
+.cookie_box .cookie.blast {
+  /* animation: cookie_run .2s infinite steps(7); */
+  /* background-color: red; */
+}
+.cookie_box .cookie.run.giant {
+  height: 150%;
+  width: 150%;
+  transform: translateY(-112px);
+  background-size: 2215.5px 339.3px;
+  animation: cookie_run_giant .4s infinite steps(7);
+  /* background-color: blue; */
+}
+.cookie_box .cookie.slide.giant {
+  width: 169.65px;
+  height: 452.4px;
+  animation: none;
+  transform: rotate(270deg) translateX(105px);
+  background-size: 169.65px 452.4px;
+}
+.cookie_box .cookie.jump.giant {
+  height: 150%;
+  width: 150%;
+  background-size: 316.5px 339.3px;
+}
+.cookie_box .cookie.jump.double.giant {
+  height: 150%;
+  width: 150%;
+  background-size: 3481.5px 339.3px;
+  animation: cookie_jump_double_giant .5s infinite steps(11);
+}
+.cookie_box .cookie.jump.down.giant,  .cookie_box .cookie.jump.down.slide.giant{
+  height: 150%;
+  width: 150%;
+  background-size: 316.5px 339.3px;
+}
+.cookie_box .cookie.supper {
+  animation: blink_effect .1s infinite !important;
+}
 .cookie_box .cookie.dead {
   background-image: url("../lib/images/gingerMK_dead.png") !important;
   background-size: 211px 226.2px;
@@ -302,6 +399,7 @@ body {
   animation: none !important;
   /* animation: none; */
 }
+
 
 .jelly {
   position: absolute;
@@ -342,6 +440,14 @@ body {
   height: 150px;
   background-image: url("../lib/jelly/big_bear_jelly.png");
   background-size: 150px 150px;
+  z-index: 10;
+}
+.jelly.coin {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-image: url("../lib/jelly/coin_jelly.png");
+  background-size: 35px 35px;
   z-index: 10;
 }
 
@@ -521,4 +627,30 @@ body {
   height: 572.8px;
   background-image: url('../lib/obstacles/knife.png');
   background-size: 226.2px 572.8px;
+}
+
+.item {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+}
+
+.item.blast {
+  /* position: absolute;
+  width: 90px;
+  height: 90px; */
+  background-image: url('../lib/items/Blast\ Jelly.png');
+  background-size: 90px 90px;
+}
+.item.giant {
+  background-image: url('../lib/items/Giant\ Jelly.png');
+  background-size: 90px 90px;
+}
+.item.coin_magic {
+  background-image: url('../lib/items/Coin\ Magic\ Jelly.png');
+  background-size: 90px 90px;
+}
+.item.magnet {
+  background-image: url('../lib/items/Magnet\ Jelly.png');
+  background-size: 90px 90px;
 }
