@@ -301,9 +301,6 @@ body {
 .cookie_box .cookie.paused {
   animation: none !important;
 }
-/* .cookie_box .cookie.flip {
-  transform: rotateY(180deg);
-} */
 .cookie_box .cookie.run {
   height: 100%;
   background-image: url("../lib/images/gingerMK_run.png");
@@ -408,6 +405,7 @@ body {
   background-image: url("../lib/jelly/blue_jelly_bean.png");
   background-size: 45.2px 56.5px;
   z-index: 10;
+  will-change: transform;
   /* background-color: blue; */
 }
 .jelly.yellow_bear {
@@ -652,5 +650,15 @@ body {
 }
 .item.magnet {
   background-image: url('../lib/items/Magnet\ Jelly.png');
+  background-size: 90px 90px;
+}
+.item.energy_potion {
+  width: 150px;
+  height: 150px;
+  background-image: url('../lib/items/Energy\ Potion.png');
+  background-size: 150px 150px;
+}
+.item.mini_energy_potion {
+  background-image: url('../lib/items/Mini\ Energy\ Potion.png');
   background-size: 90px 90px;
 }

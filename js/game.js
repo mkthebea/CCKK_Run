@@ -63,6 +63,39 @@ const renderGame = () => {
     document.querySelector(".cookie_box").style.transform = `translate(${cookie.movex}px, ${cookie.movey}px)`;
     setGameBackground();
     allJellyComProp.arr.forEach((arr) => {
+      // arr.el.style.transform = `translate(${arr.x}px, ${arr.y}px)`;
+      if (arr.magnet === true) {
+        //젤리가 쿠키의 왼쪽에 있는 경우
+        if (arr.position().right < cookie.position().left + 105.5) {
+          arr.x += 30;
+          //젤리가 쿠키의 왼쪽 위에 있는 경우
+          if (arr.position().bottom > cookie.position().top - 113.1) {
+            arr.y += 20;
+          } else {
+            //젤리가 쿠키의 왼쪽 아래에 있는 경우
+            arr.y -= 20;
+          }
+        } else {
+          //젤리가 쿠키의 오른쪽에 있는 경우
+          arr.x -= 30;
+          //젤리가 쿠키의 오른쪽 위에 있는 경우
+          if (arr.position().bottom > cookie.position().top - 113.1) {
+            arr.y += 20;
+          } else {
+            //젤리가 쿠키의 오른쪽 아래에 있는 경우
+            arr.y -= 20;
+          }
+        }
+        arr.el.style.transform = `translate(${arr.x}px, ${arr.y}px)`;
+        if (
+          arr.position().right > cookie.position().left &&
+          arr.position().left < cookie.position().right &&
+          arr.position().top > cookie.position().bottom &&
+          arr.position().bottom < cookie.position().top
+        )
+          arr.magnet = false;
+      }
+
       arr.crashJelly();
     });
     allObstacleComProp.arr.forEach((arr) => {

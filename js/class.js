@@ -95,9 +95,11 @@ class Stage {
     }, 1500);
   }
   callMap() {
-    allItemComProp.arr.push(new Item(500, 475, "coin_magic"));
-    allItemComProp.arr.push(new Item(2300, 475, "coin_magic"));
-    allItemComProp.arr.push(new Item(4300, 475, "coin_magic"));
+    allItemComProp.arr.push(new Item(300, 475, "coin_magic"));
+    allItemComProp.arr.push(new Item(480, 475, "magnet"));
+    allItemComProp.arr.push(new Item(4000, 475, "magnet"));
+    allItemComProp.arr.push(new Item(4300, 475, "energy_potion"));
+    allItemComProp.arr.push(new Item(5000, 475, "mini_energy_potion"));
 
     // allItemComProp.arr.push(new Item(3000, 475, "giant"));
 
@@ -236,6 +238,12 @@ class Cookie {
       this.dead();
     }
   }
+  plusHp(hp) {
+    const hpBox = document.querySelector(".game_info .hp .hp_background .hp_progress");
+    this.hpValue += hp;
+    this.hpProgress = Math.min(100, (this.hpValue / this.defaultHpValue) * 100);
+    hpBox.style.width = this.hpProgress + "%";
+  }
   dead() {
     this.el.className = "cookie dead";
     gameProp.gameOver = true;
@@ -263,6 +271,7 @@ class Jelly {
     this.y = y;
     this.type = type;
     this.score = this.type === "coin" ? 10 : type === "yellow_bear" ? 200 : type === "pink_bear" ? 300 : type === "blue_bear" ? 500 : type === "big_bear" ? 1000 : 0;
+    this.magnet = false;
 
     this.init();
   }
@@ -417,6 +426,10 @@ class Item {
           this.coinMagic();
         } else if (this.type === "magnet") {
           this.magnet();
+        } else if (this.type === "energy_potion") {
+          cookie.plusHp(300);
+        } else if (this.type === "mini_energy_potion") {
+          cookie.plusHp(30);
         }
       }
     }
@@ -471,5 +484,11 @@ class Item {
       }
     });
   }
-  magnet() {}
+  magnet() {
+    allJellyComProp.arr.forEach((arr) => {
+      if (arr.x < cookie.movex + (gameProp.screenWidth / 5) * 4 && arr.x > cookie.movex - gameProp.screenWidth / 5) {
+        arr.magnet = true;
+      }
+    });
+  }
 }
