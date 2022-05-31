@@ -58,7 +58,7 @@ const pause = () => {
 const renderGame = () => {
   cookie.keyMotion();
   if (!gameProp.paused && !gameProp.gameOver && !gameProp.gameClear) {
-    cookie.minusHp(-0.5);
+    cookie.minusHp(-0.2);
     cookie.movex = cookie.movex + cookie.speed;
     document.querySelector(".cookie_box").style.transform = `translate(${cookie.movex}px, ${cookie.movey}px)`;
     setGameBackground();

@@ -209,7 +209,7 @@ body {
       background-position-x: 0px;
     }
     100% {
-      background-position-x: -1477px;
+      background-position-x: -1470px;
     }
   }
 @keyframes cookie_run_giant {
@@ -266,7 +266,7 @@ body {
     background-position-x: 0px;
   }
   100% {
-    background-position-x: -2321px;
+    background-position-x: -2310px;
   }
 }
 @keyframes cookie_jump_double_giant {
@@ -277,7 +277,6 @@ body {
     background-position-x: -3481.5px;
   }
 }
-
 @keyframes blink_effect {
   50% {
     opacity: 0;
@@ -288,8 +287,8 @@ body {
   position: fixed;
   left: 0;
   bottom: 10%;
-  width: 211px;
-  height: 226.2px;
+  width: 210px;
+  height: 230px;
   will-change: transform;
   z-index: 20;
   /* background-color: red; */
@@ -304,15 +303,15 @@ body {
 .cookie_box .cookie.run {
   height: 100%;
   background-image: url("../lib/images/gingerMK_run.png");
-  background-size: 1477px 226.2px;
+  background-size: 1470px 230px;
   animation: cookie_run .4s infinite steps(7);
 }
 .cookie_box .cookie.slide {
   position: relative;
-  width: 113.1px;
-  height: 301.6px;
+  width: 110px;
+  height: 300px;
   background-image: url("../lib/images/gingerMK_slide.png");
-  background-size: 113.1px 301.6px;
+  background-size: 110px 300px;
   animation: none;
   transform: rotate(270deg);
   bottom: -22.6px;
@@ -320,14 +319,14 @@ body {
 .cookie_box .cookie.jump {
   height: 100%;
   background-image: url("../lib/images/gingerMK_jump_one.png");
-  background-size: 211px 226.2px;
+  background-size: 210px 230px;
   animation: none;
 }
 .cookie_box .cookie.jump.double {
   height: 100%;
   width: 100%;
   background-image: url("../lib/images/gingerMK_jump_double.png");
-  background-size: 2321px 226.2px;
+  background-size: 2310px 230px;
   animation: cookie_jump_double .5s infinite steps(11);
 }
 .cookie_box .cookie.jump.down,  .cookie_box .cookie.jump.down.slide{
@@ -336,7 +335,7 @@ body {
   height: 100%;
   width: 100%;
   background-image: url("../lib/images/gingerMK_jump_down.png");
-  background-size: 211px 226.2px;
+  background-size: 210px 230px;
   transform: none;
 }
 .cookie_box .cookie.crashed {
@@ -347,7 +346,7 @@ body {
   height: 100%;
   transform: none;
   background-image: url("../lib/images/gingerMK_crashed3.png") !important;
-  background-size: 211px 226.2px !important;
+  background-size: 210px 230px !important;
   animation: blink_effect .1s infinite !important;
 }
 .cookie_box .cookie.blast {
@@ -400,36 +399,35 @@ body {
 
 .jelly {
   position: absolute;
-  width: 45.2px;
-  height: 56.5px;
+  width: 50px;
+  height: 60px;
   background-image: url("../lib/jelly/blue_jelly_bean.png");
-  background-size: 45.2px 56.5px;
+  background-size: 50px 60px;
   z-index: 10;
   will-change: transform;
-  /* background-color: blue; */
 }
 .jelly.yellow_bear {
   position: absolute;
-  width: 56.5px;
-  height: 56.5px;
+  width: 60px;
+  height: 60px;
   background-image: url("../lib/jelly/yellow_bear_jelly.png");
-  background-size: 56.5px 56.5px;
+  background-size: 60px 60px;
   z-index: 10;
 }
 .jelly.pink_bear {
   position: absolute;
-  width: 56.5px;
-  height: 56.5px;
+  width: 60px;
+  height: 60px;
   background-image: url("../lib/jelly/pink_bear_jelly.png");
-  background-size: 56.5px 56.5px;
+  background-size: 60px 60px;
   z-index: 10;
 }
 .jelly.blue_bear {
   position: absolute;
-  width: 56.5px;
-  height: 56.5px;
+  width: 60px;
+  height: 60px;
   background-image: url("../lib/jelly/blue_bear_jelly.png");
-  background-size: 56.5px 56.5px;
+  background-size: 60px 60px;
   z-index: 10;
 }
 .jelly.big_bear {
@@ -442,10 +440,10 @@ body {
 }
 .jelly.coin {
   position: absolute;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   background-image: url("../lib/jelly/coin_jelly.png");
-  background-size: 35px 35px;
+  background-size: 40px 40px;
   z-index: 10;
 }
 
@@ -501,10 +499,10 @@ body {
     background-position-x: 0px;
   }
   99% {
-    background-position-x: -565px;
+    background-position-x: -550px;
   }
   100% {
-    background-position-x: -452px;
+    background-position-x: -440px;
   }
 }
 @keyframes clocks {
@@ -512,7 +510,7 @@ body {
     background-position-x: 0px;
   }
   100% {
-    background-position-x: -452px;
+    background-position-x: -440px;
   }
 }
 @keyframes table {
@@ -520,7 +518,7 @@ body {
     background-position-x: 0px;
   }
   100% {
-    background-position-x: -565px;
+    background-position-x: -550px;
   }
 }
 @keyframes long_crystal {
@@ -528,7 +526,17 @@ body {
     background-position-x: 0px;
   }
   100% {
-    background-position-x: -452.4px;
+    background-position-x: -460px;
+  }
+}
+@keyframes broken {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-500px, -500px) rotate(720deg);
+    opacity: 0;
   }
 }
 
@@ -541,96 +549,137 @@ body {
   z-index: 10;
   /* background-color: red; */
 }
+.obstacle.broken {
+  animation: broken 1s both !important;
+}
 
+/*2단*/
 .obstacle.clocks {
   /* 2단 */
   position: absolute;
-  width: 113px;
-  height: 301px;
+  width: 100px;
+  height: 300px;
   background-image: url("../lib/obstacles/clock.png");
-  background-size: 452px 301px;
+  background-size: 440px 300px;
   animation: clocks 1s infinite steps(4); 
 }
 .obstacle.pink_crystal {
   /* 2단 */
   position: absolute;
-  width: 113px;
-  height: 301px;
+  width: 110px;
+  height: 300px;
   background-image: url("../lib/obstacles/pink_crystal.png");
-  background-size: 113px 301px;
+  background-size: 110px 300px;
 }
 .obstacle.snacks {
   /* 2단 */
   position: absolute;
-  width: 113px;
-  height: 301px;
+  width: 110px;
+  height: 300px;
   background-image: url("../lib/obstacles/snacks.png");
-  background-size: 565.5px 301px;
+  background-size: 550px 300px;
   animation: snacks 1s forwards steps(5); 
 }
 .obstacle.cake {
   /* 2단 */
   position: absolute;
-  width: 113px;
-  height: 301px;
+  width: 110px;
+  height: 300px;
   background-image: url("../lib/obstacles/cake1.png");
-  background-size: 113px 301px;
+  background-size: 110px 300px;
 }
+.obstacle.dragon_tail {
+  /* 2단 */
+  position: absolute;
+  width: 110px;
+  height: 300px;
+  background-image: url("../lib/obstacles/dragon_tail.png");
+  background-size: 110px 300px;
+}
+
+/*1단*/
 .obstacle.table {
   /* 1단 */
   position: absolute;
-  width: 113px;
-  height: 113px;
+  width: 100px;
+  height: 110px;
   background-image: url("../lib/obstacles/table.png");
-  background-size: 565px 113px;
+  background-size: 550px 110px;
   animation: table 1s infinite steps(5); 
 }
 .obstacle.green_crystal {
   /* 1단 */
   position: absolute;
-  width: 113px;
-  height: 113px;
+  width: 110px;
+  height: 110px;
   background-image: url("../lib/obstacles/green_crystal.png");
-  background-size: 113px 113px;
+  background-size: 110px 110px;
 }
 .obstacle.mini_snack {
   /* 1단 */
   position: absolute;
-  width: 113px;
-  height: 113px;
+  width: 110px;
+  height: 110px;
   background-image: url("../lib/obstacles/mini_snack.png");
-  background-size: 113px 113px;
+  background-size: 110px 110px;
 }
+.obstacle.small_mushroom {
+  /* 1단 */
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  background-image: url("../lib/obstacles/mushroom_small.png");
+  background-size: 110px 110px;
+}
+
+/*슬라이드*/
 .obstacle.lamp {
   /* 슬라이드 */
   position: absolute;
-  width: 226.2px;
-  height: 572.8px;
+  width: 300px;
+  height: 570px;
   background-image: url('../lib/obstacles/lamp.png');
-  background-size: 226.2px 572.8px;
+  background-size: 300px 570px;
+}
+.obstacle.lamp.broken {
+  background-image: url('../lib/obstacles/lamp_broken.png');
+  width: 431px;
+  height: 570px;
+  background-size: 431px 570px;
+
 }
 .obstacle.long_crystal {
   /* 슬라이드 */
   position: absolute;
-  width: 226.2px;
-  height: 572.8px;
+  width: 230px;
+  height: 570px;
   background-image: url('../lib/obstacles/long_crystal.png');
-  background-size: 452.4px 572.8px;
+  background-size: 460px 570px;
   animation: long_crystal 1s infinite steps(2);
 }
 .obstacle.knife {
   /* 슬라이드 */
   position: absolute;
-  width: 226.2px;
-  height: 572.8px;
+  width: 230px;
+  height: 570px;
   background-image: url('../lib/obstacles/knife.png');
-  background-size: 226.2px 572.8px;
+  background-size: 230px 570px;
 }
+.obstacle.onion_frog {
+  /* 슬라이드 */
+  position: absolute;
+  width: 230px;
+  height: 570px;
+  background-image: url('../lib/obstacles/onion_frog.png');
+  background-size: 460px 570px;
+  animation: long_crystal 1s infinite steps(2);
+}
+
 
 .item {
   position: absolute;
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
 }
 
 .item.blast {
@@ -638,19 +687,19 @@ body {
   width: 90px;
   height: 90px; */
   background-image: url('../lib/items/Blast\ Jelly.png');
-  background-size: 90px 90px;
+  background-size: 100px 100px;
 }
 .item.giant {
   background-image: url('../lib/items/Giant\ Jelly.png');
-  background-size: 90px 90px;
+  background-size:  100px 100px;
 }
 .item.coin_magic {
   background-image: url('../lib/items/Coin\ Magic\ Jelly.png');
-  background-size: 90px 90px;
+  background-size:  100px 100px;
 }
 .item.magnet {
   background-image: url('../lib/items/Magnet\ Jelly.png');
-  background-size: 90px 90px;
+  background-size:  100px 100px;
 }
 .item.energy_potion {
   width: 150px;
@@ -660,5 +709,5 @@ body {
 }
 .item.mini_energy_potion {
   background-image: url('../lib/items/Mini\ Energy\ Potion.png');
-  background-size: 90px 90px;
+  background-size:  100px 100px;
 }
