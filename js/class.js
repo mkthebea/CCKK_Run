@@ -61,12 +61,17 @@ class Stage {
         allJellyComProp.arr.forEach((j) => {
           j.el.remove();
         });
-        allJellyComProp.arr.splice(0);
+        allJellyComProp.arr.splice(0); //배열 요소 전부 삭제
 
         allObstacleComProp.arr.forEach((o) => {
           o.el.remove();
         });
         allObstacleComProp.arr.splice(0);
+
+        allItemComProp.arr.forEach((i) => {
+          i.el.remove();
+        });
+        allItemComProp.arr.splice(0);
 
         newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
         stageInfo.currentStage = newStage;
@@ -365,7 +370,7 @@ class Jelly {
     this.x = x;
     this.y = y;
     this.type = type;
-    this.score = this.type === "coin" ? 10 : type === "yellow_bear" ? 200 : type === "pink_bear" ? 300 : type === "blue_bear" ? 500 : type === "big_bear" ? 1000 : 0;
+    this.score = type === "coin" ? 10 : type === "" ? 100 : type === "yellow_bear" ? 200 : type === "pink_bear" ? 300 : type === "blue_bear" ? 500 : type === "big_bear" ? 1000 : 0;
     this.magnet = false;
 
     this.init();
@@ -437,10 +442,10 @@ class Obstacle {
   crashObstacle() {
     if (!cookie.superCookie) {
       if (
-        this.position().right - 10 > cookie.position().left &&
-        this.position().left + 10 < cookie.position().right &&
-        this.position().top - 10 > cookie.position().bottom &&
-        this.position().bottom + 10 < cookie.position().top
+        this.position().right - 30 > cookie.position().left &&
+        this.position().left + 30 < cookie.position().right &&
+        this.position().top - 30 > cookie.position().bottom &&
+        this.position().bottom + 30 < cookie.position().top
       ) {
         this.isCrashed = true;
         cookie.crashed = true;
