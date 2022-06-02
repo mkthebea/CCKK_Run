@@ -90,6 +90,12 @@ class Stage {
           o.el.remove();
         });
         allObstacleComProp.arr.splice(0);
+
+        allItemComProp.arr.forEach((i) => {
+          i.el.remove();
+        });
+        allItemComProp.arr.splice(0);
+
         location.href = "index.html";
       }
     }, 1500);
