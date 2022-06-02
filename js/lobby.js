@@ -63,6 +63,7 @@ const loadImg = () => {
     "./lib/obstacles/lamp.png",
     "./lib/obstacles/long_crystal.png",
     "./lib/obstacles/knife.png",
+    "./lib/obstacles/lamp_broken.png",
   ];
   preLoadImgSrc.forEach((arr) => {
     const img = new Image();
