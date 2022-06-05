@@ -171,13 +171,13 @@ body {
   margin-right: 5vw;
 }
 
-.lobby .top_bar .setting_box {
+/* .lobby .top_bar .setting_box {
   display: flex;
   width: 16.6%;
   justify-content: space-between;
   align-items: center;
-}
-.lobby .top_bar .setting_box .my_page_button {
+} */
+/* .lobby .top_bar .setting_box .my_page_button {
   font-family: 'cookieRun Regular';
   display: flex;
   flex-direction: column;
@@ -186,18 +186,16 @@ body {
   width: 150px;
   height: 50px;
   background-color: #0f2897;
-  /* background-color: orange; */
   border-radius: 10px;
   border-color: rgb(144, 165, 250);
-  /* border-color: wheat; */
   border-width: 4px;
 }
 .lobby .top_bar .setting_box .my_page_button .my_page_text {
   font-size: 25px;
   color: rgb(144, 165, 250);
   text-shadow: 1px 1px 1px #000;
-}
-.lobby .top_bar .setting_box .reset_button {
+} */
+.lobby .top_bar .reset_button {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -205,13 +203,11 @@ body {
   width: 50px;
   height: 50px;
   background-color: #0f2897;
-  /* background-color: orange; */
   border-radius: 50px;
   border-color: rgb(144, 165, 250);
-  /* border-color: wheat; */
   border-width: 4px;
 }
-.lobby .top_bar .setting_box .reset_button .reset_button_icon {
+.lobby .top_bar .reset_button .reset_button_icon {
   font-size: 26px;
   color: rgb(144, 165, 250);
   text-shadow: 1px 1px 1px #000;
