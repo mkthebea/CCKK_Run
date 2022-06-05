@@ -53,66 +53,67 @@ class Stage {
     document.querySelector(".cookie").className = "cookie run";
 
     setTimeout(() => {
-      const nextStage = confirm("다음 스테이지?");
-      if (nextStage) {
-        cookie.movex = 0;
-        gameBackground.gameBox.style.transform = `translateX(${0}px)`;
+      document.querySelector(".stage_guide").style.display = "block";
+      // const nextStage = confirm("다음 스테이지?");
+      // if (nextStage) {
+      //   cookie.movex = 0;
+      //   gameBackground.gameBox.style.transform = `translateX(${0}px)`;
 
-        allJellyComProp.arr.forEach((j) => {
-          j.el.remove();
-        });
-        allJellyComProp.arr.splice(0); //배열 요소 전부 삭제
+      //   allJellyComProp.arr.forEach((j) => {
+      //     j.el.remove();
+      //   });
+      //   allJellyComProp.arr.splice(0); //배열 요소 전부 삭제
 
-        allObstacleComProp.arr.forEach((o) => {
-          o.el.remove();
-        });
-        allObstacleComProp.arr.splice(0);
+      //   allObstacleComProp.arr.forEach((o) => {
+      //     o.el.remove();
+      //   });
+      //   allObstacleComProp.arr.splice(0);
 
-        allItemComProp.arr.forEach((i) => {
-          i.el.remove();
-        });
-        allItemComProp.arr.splice(0);
+      //   allItemComProp.arr.forEach((i) => {
+      //     i.el.remove();
+      //   });
+      //   allItemComProp.arr.splice(0);
 
-        newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
-        stageInfo.currentStage = newStage;
+      //   newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
+      //   stageInfo.currentStage = newStage;
 
-        gameProp.gameClear = false;
-      } else {
-        cookie.movex = 0;
-        gameBackground.gameBox.style.transform = `translateX(${0}px)`;
+      //   gameProp.gameClear = false;
+      // } else {
+      //   cookie.movex = 0;
+      //   gameBackground.gameBox.style.transform = `translateX(${0}px)`;
 
-        allJellyComProp.arr.forEach((j) => {
-          j.el.remove();
-        });
-        allJellyComProp.arr.splice(0);
+      //   allJellyComProp.arr.forEach((j) => {
+      //     j.el.remove();
+      //   });
+      //   allJellyComProp.arr.splice(0);
 
-        allObstacleComProp.arr.forEach((o) => {
-          o.el.remove();
-        });
-        allObstacleComProp.arr.splice(0);
+      //   allObstacleComProp.arr.forEach((o) => {
+      //     o.el.remove();
+      //   });
+      //   allObstacleComProp.arr.splice(0);
 
-        allItemComProp.arr.forEach((i) => {
-          i.el.remove();
-        });
-        allItemComProp.arr.splice(0);
+      //   allItemComProp.arr.forEach((i) => {
+      //     i.el.remove();
+      //   });
+      //   allItemComProp.arr.splice(0);
 
-        location.href = "index.html";
-      }
+      //   location.href = "index.html";
+      // }
     }, 1500);
   }
   allClear() {
-    this.stageGuide("STAGE CLEAR");
+    this.stageGuide("ALL CLEAR");
     document.querySelector(".cookie").className = "cookie run";
 
     setTimeout(() => {
-      alert("ALL CLEAR!!");
+      document.querySelector(".stage_guide_all_clear").style.display = "block";
+
       localStorage.setItem("currentStageIndex", 0);
       localStorage.removeItem("score");
       localStorage.setItem("hp", cookie.defaultHpValue);
       if (localStorage.getItem("highestScore") < stageInfo.totalScore) {
         localStorage.setItem("highestScore", stageInfo.totalScore);
       }
-      location.href = "index.html";
     }, 1500);
   }
   callMap() {

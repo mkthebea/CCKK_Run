@@ -55,6 +55,55 @@ const pause = () => {
   }
 };
 
+const nextStage = () => {
+  cookie.movex = 0;
+  gameBackground.gameBox.style.transform = `translateX(${0}px)`;
+
+  allJellyComProp.arr.forEach((j) => {
+    j.el.remove();
+  });
+  allJellyComProp.arr.splice(0); //배열 요소 전부 삭제
+
+  allObstacleComProp.arr.forEach((o) => {
+    o.el.remove();
+  });
+  allObstacleComProp.arr.splice(0);
+
+  allItemComProp.arr.forEach((i) => {
+    i.el.remove();
+  });
+  allItemComProp.arr.splice(0);
+
+  newStage = new Stage(stageInfo.stage[stageInfo.currentStageIndex]);
+  stageInfo.currentStage = newStage;
+
+  gameProp.gameClear = false;
+  document.querySelector(".stage_guide").style.display = "none";
+};
+
+const backLobby = () => {
+  cookie.movex = 0;
+  gameBackground.gameBox.style.transform = `translateX(${0}px)`;
+
+  allJellyComProp.arr.forEach((j) => {
+    j.el.remove();
+  });
+  allJellyComProp.arr.splice(0);
+
+  allObstacleComProp.arr.forEach((o) => {
+    o.el.remove();
+  });
+  allObstacleComProp.arr.splice(0);
+
+  allItemComProp.arr.forEach((i) => {
+    i.el.remove();
+  });
+  allItemComProp.arr.splice(0);
+
+  location.href = "index.html";
+  document.querySelector(".stage_guide").style.display = "none";
+};
+
 const renderGame = () => {
   cookie.keyMotion();
   if (!gameProp.paused && !gameProp.gameOver && !gameProp.gameClear) {

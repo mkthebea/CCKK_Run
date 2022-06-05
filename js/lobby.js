@@ -86,7 +86,7 @@ const init = () => {
   scoreBox.innerText = "현재 점수: " + score;
 
   rankGuideBox.style.display = "none";
-  document.querySelector(".my_page").style.display = "none";
+  // document.querySelector(".my_page").style.display = "none";
   document.querySelector(".notice_page").style.display = "none";
 
   if (highestScore >= 170000) {

@@ -55,6 +55,89 @@ body {
   animation: crash .1s steps(2);
   animation-iteration-count: 5;
 }
+
+.game_app .stage_guide {
+  position: absolute;
+  display: none;
+  width: 30vw;
+  height: 30vh;
+  top: 50%;
+  left: 50%;
+  margin-top: -15vh;
+  margin-left: -15vw;
+  background-color: wheat;
+  border: 6px solid orange;
+  border-radius: 10px;
+  z-index: 30;
+}
+.game_app .stage_guide .stage_guide_text {
+  font-family: 'cookieRun Bold';
+  font-size: 20px;
+  margin-right: 2vw;
+  margin-left: 2vw;
+  margin-top: 5vh;
+  height: 10vh;
+  width: 26vw;
+  color: rgb(64, 7, 7);
+  /* text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; */
+  text-align: center;
+  /* line-height: 10vh; */
+}
+.game_app .stage_guide button {
+  font-family: 'cookieRun Bold';
+  width: 10vw;
+  height: 6vh;
+  margin-top: 7vh;
+  margin-left: 3.3vw;
+  font-size: 20px;
+  border: rgb(64, 7, 7) 2px solid;
+  border-radius: 15px;
+  background-color: orange;
+  color: white;
+  text-shadow: -1px 0 rgb(64, 7, 7), 0 1px rgb(64, 7, 7), 1px 0 rgb(64, 7, 7), 0 -1px rgb(64, 7, 7);
+}
+
+.game_app .stage_guide_all_clear {
+  position: absolute;
+  display: none;
+  width: 30vw;
+  height: 30vh;
+  top: 50%;
+  left: 50%;
+  margin-top: -15vh;
+  margin-left: -15vw;
+  background-color: wheat;
+  border: 6px solid orange;
+  border-radius: 10px;
+  z-index: 30;
+}
+.game_app .stage_guide_all_clear .stage_guide_all_clear_text {
+  font-family: 'cookieRun Bold';
+  font-size: 20px;
+  margin-right: 2vw;
+  margin-left: 2vw;
+  margin-top: 5vh;
+  height: 10vh;
+  width: 26vw;
+  color: rgb(64, 7, 7);
+  /* text-shadow: -0.5px 0 white, 0 0.5px white, 0.5px 0 white, 0 -0.5px white; */
+  text-align: center;
+  /* line-height: 10vh; */
+}
+.game_app .stage_guide_all_clear button {
+  font-family: 'cookieRun Bold';
+  width: 10vw;
+  height: 6vh;
+  margin-top: 7vh;
+  margin-left: 10vw;
+  font-size: 20px;
+  border: rgb(64, 7, 7) 2px solid;
+  border-radius: 15px;
+  background-color: orange;
+  color: white;
+  text-shadow: -1px 0 rgb(64, 7, 7), 0 1px rgb(64, 7, 7), 1px 0 rgb(64, 7, 7), 0 -1px rgb(64, 7, 7);
+}
+
 .game_app .ground {
   position: absolute;
   left: 0;

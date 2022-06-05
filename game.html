@@ -13,6 +13,15 @@
 <body>
     <div class="game_app">
         <div class="crash_filter"></div>
+        <div class="stage_guide">
+            <div class="stage_guide_text">스테이지 클리어!<br>다음 스테이지로 가시겠어요?<br>로비로 돌아가도 모든 데이터는 유지됩니다.</div>
+            <button onclick="nextStage()">다음 스테이지</button>
+            <button onclick="backLobby()">로비로 돌아가기</button>
+        </div>
+        <div class="stage_guide_all_clear">
+            <div class="stage_guide_all_clear_text">모든 스테이지 클리어!<br>로비로 돌아가 최고 점수를 확인하세요.</div>
+            <button onclick="backLobby()">로비로 돌아가기</button>
+        </div>
 
         <div class="game">
             <div class="cookie_box">
